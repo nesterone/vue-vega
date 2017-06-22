@@ -25,22 +25,20 @@ Origianl Vega gramma file
 We can define in Vue component style 
 
 ```
-<template type="vg-lite">
+<template lang="vgm-lite">
   <vg-document :description="description">
     <vg-bar v-encode="value in values" :x="v.a" :y="v.b"/>
   </vg-document>
 </template>
 
 <script>
-export default {
-  
+export default { 
   props: {
     descritption: {
       type: String,
       default: "A simple bar chart with embedded data."
     }
   }
-  
   data () {
     return {
       values: [
@@ -54,12 +52,13 @@ export default {
 }
 </script>
 
-<style>
-
-
-
+<style lang="vgs-lite" scoped>
+  vg-bar {
+    filled: true,
+    color: #4682b4,
+    stroke: #f3404 
+  }
 </style>
-
 
 
 ```
