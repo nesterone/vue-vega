@@ -26,9 +26,9 @@ We can define in Vue component style
 
 ```
 <template lang="vgm-lite">
-  <vg-document :description="description">
+  <vg-spec :description="description">
     <vg-bar v-encode="value in values" :x="v.a" :y="v.b"/>
-  </vg-document>
+  </vg-spec>
 </template>
 
 <script>
