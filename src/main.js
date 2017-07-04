@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import App from './App.vue'
+import App from './AppWithVega.vue'
 
 new Vue({
   el: '#app',

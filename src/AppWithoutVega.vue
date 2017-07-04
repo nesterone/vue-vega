@@ -12,8 +12,8 @@
 </template>
 
 <script>
-import VglSpec from "./components/VglSpec.vue";
-import VglMark from "./components/VglMark.vue";
+import VglSpec from "./components/noVega/VglSpec.vue";
+import VglMark from "./components/noVega/VglMark.vue";
 
 export default {
 
