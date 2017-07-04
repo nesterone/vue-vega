@@ -1,12 +1,11 @@
 <template>
   <div id="app">
-      <BarChart/>
+      <BarChart description="A simple bar chart with embedded data"/>
   </div>
 </template>
 
 <script>
 import BarChart from "./components/BarChart.vue";
-import VglMark from "./components/noVega/VglMark.vue";
 
 export default {
 
