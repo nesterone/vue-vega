@@ -41,7 +41,7 @@
                             <g transform="translate(0,0)">
                                 <path class="background" d="M0,0h189v200h-189Z" style="fill: transparent;"></path>
                                 <g>
-                                    <slot></slot>
+                                        <slot></slot>
                                 </g>
                             </g>
                         </g>
