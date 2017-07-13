@@ -1,22 +1,16 @@
 <template>
-  <div id="app">
-      <BarChart description="A simple bar chart with embedded data"/>
+  <div id='app'>
+    <BarChart description='A simple bar chart with embedded data'></BarChart>
   </div>
 </template>
 
 <script>
-import BarChart from "./components/BarChart.vue";
+  import BarChart from './components/BarChart.vue';
 
-export default {
-
-  components: {
+  export default {
+    components: {
       BarChart
-  },
-
-  name: 'app'
-}
+    },
+    name: 'app'
+  }
 </script>
-
-<style>
-
-</style>
