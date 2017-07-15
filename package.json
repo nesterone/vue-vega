@@ -88,6 +88,7 @@
     "not ie <= 8"
   ],
   "pre-commit": [
-    "lint"
+    "lint",
+    "test"
   ]
 }
