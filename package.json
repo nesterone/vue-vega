@@ -16,22 +16,26 @@
   },
   "devDependencies": {
     "babel-core": "^6.0.0",
+    "babel-eslint": "^7.1.1",
     "babel-loader": "^6.0.0",
     "babel-preset-env": "^1.5.1",
-    "babel-eslint": "^7.1.1",
     "cross-env": "^3.0.0",
     "css-loader": "^0.25.0",
-    "file-loader": "^0.9.0",
-    "vue-loader": "^12.1.0",
-    "vue-template-compiler": "^2.3.3",
-    "webpack": "^2.6.1",
-    "webpack-dev-server": "^2.4.5",
     "eslint": "^3.19.0",
     "eslint-config-standard": "^6.2.1",
     "eslint-friendly-formatter": "^2.0.7",
     "eslint-loader": "^1.7.1",
     "eslint-plugin-html": "^2.0.0",
     "eslint-plugin-promise": "^3.4.0",
-    "eslint-plugin-standard": "^2.0.1"
-  }
+    "eslint-plugin-standard": "^2.0.1",
+    "file-loader": "^0.9.0",
+    "pre-commit": "^1.2.2",
+    "vue-loader": "^12.1.0",
+    "vue-template-compiler": "^2.3.3",
+    "webpack": "^2.6.1",
+    "webpack-dev-server": "^2.4.5"
+  },
+  "pre-commit": [
+    "lint"
+  ]
 }
