@@ -6,7 +6,7 @@ describe('vegaLiteMixin', () => {
     it('should throw MarkOptionMissedError if option doesn\'t contain `mark` field', () => {
       const $options = {
         data () {
-          return { values: [1, 2, 3] }
+          return {values: [1, 2, 3]}
         },
         encoding: {}
       }
