@@ -2,6 +2,7 @@
 import * as vega from 'vega';
 import * as vl from 'vega-lite';
 import MarkOptionMissedError from 'src/error/MarkOptionMissedError'
+import EncodingOptionMissedError from 'src/error/EncodingOptionMissedError'
 
 const specTemplate = {
   '$schema': 'https://vega.github.io/schema/vega-lite/v2.json'
@@ -22,7 +23,7 @@ export default {
 
     this.$spec.data = this.$options.data();
 
-    const mark = this.$options.mark;
+    const mark = this.$options.mark
 
     if (!mark) {
       throw new MarkOptionMissedError()
@@ -30,10 +31,10 @@ export default {
 
     this.$spec.mark = mark;
 
-    const encoding = this.$options.encoding;
+    const encoding = this.$options.encoding
 
     if (!encoding) {
-      throw new Error('Can\'t build visualization data encoding')
+      throw new EncodingOptionMissedError()
     }
 
     this.$spec.encoding = encoding;
