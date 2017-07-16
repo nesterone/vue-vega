@@ -159,4 +159,40 @@ describe('createVegaLiteMixin', () => {
       expect(view.hover).to.have.been.called
     })
   })
+
+  describe('mounted', () => {
+    it('should initialize view within dom elem of component and run', () => {
+      let view = {
+        initialize: sandbox.stub(),
+        run: sandbox.stub()
+      }
+      let context = {
+        $vg: view,
+        $el: 'el'
+      }
+
+      view.initialize.returns(view)
+      view.run.returns(view)
+
+      vegaLiteMixin.mounted.call(context)
+
+      expect(view.initialize).to.have.been.calledWith(context.$el)
+      expect(view.run).to.have.been.called
+    })
+  })
+
+  describe('destroyed', () => {
+    it('should finilize view', () => {
+      let view = {
+        finalize: sandbox.stub()
+      }
+      let context = {
+        $vg: view
+      }
+
+      vegaLiteMixin.destroyed.call(context)
+
+      expect(view.finalize).to.have.been.called
+    })
+  })
 })
