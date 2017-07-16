@@ -1,7 +1,7 @@
 <script>
 import * as vega from 'vega';
 import * as vl from 'vega-lite';
-import createVegaLiteMixin from '../mixin/createvegaLiteMixin';
+import createVegaLiteMixin from '../mixin/createVegaLiteMixin';
 
 const vegaLiteMixin = createVegaLiteMixin({
   compile: vl.compile,
