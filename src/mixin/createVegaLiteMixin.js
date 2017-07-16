@@ -6,11 +6,6 @@ const SPEC_TEMPLATE = {
 };
 
 export default function createVegaLiteMixin (options) {
-  const compile = options.compile
-  const parse = options.parse
-  const View = options.View
-  const logLevel = options.logLevel
-
   return {
 
     template: `<div></div>`,
@@ -44,6 +39,11 @@ export default function createVegaLiteMixin (options) {
     },
 
     created () {
+      const compile = options.compile
+      const parse = options.parse
+      const View = options.View
+      const logLevel = options.logLevel
+
       if (this.description) {
         this.$spec.description = this.description;
       }
@@ -55,7 +55,7 @@ export default function createVegaLiteMixin (options) {
 
       this.$vg.logLevel(logLevel)
         .renderer('svg')
-        .hover()
+        .hover();
     },
 
     mounted () {

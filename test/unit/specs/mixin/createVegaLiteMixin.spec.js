@@ -7,30 +7,9 @@ const sandbox = sinon.sandbox.create()
 
 describe('createVegaLiteMixin', () => {
   let vegaLiteMixin
-  let View
-  let view
-  let parse
-  let compile
-  let logLevel = vegaUtil.Debug
 
   beforeEach(() => {
-    view = {
-      logLevel: sandbox.stub().returns(view),
-      renderer: sandbox.stub().returns(view),
-      hover: sandbox.stub().returns(view)
-    }
-
-    View = sandbox.stub().returns(view)
-
-    parse = sandbox.stub().returns({})
-    compile = sandbox.stub().returns({})
-
-    vegaLiteMixin = createVegaLiteMixin({
-      compile,
-      parse,
-      View,
-      logLevel
-    })
+    vegaLiteMixin = createVegaLiteMixin()
   })
 
   afterEach(() => {
@@ -86,8 +65,17 @@ describe('createVegaLiteMixin', () => {
       })
     })
   })
+
   describe('created', () => {
+    let View
+    let view
+    let parse
+    let compile
     let spec
+    let context
+    let compilerOutput
+    let runtime
+    let logLevel = vegaUtil.Debug
 
     beforeEach(() => {
       spec = {
@@ -104,17 +92,71 @@ describe('createVegaLiteMixin', () => {
           y: {field: 'b', type: 'quantitative'}
         }
       }
-    })
-
-    it('should add description to spec', () => {
-      const context = {
+      context = {
         description: 'description',
         $spec: spec
       }
+      compilerOutput = {
+        spec: 'vegaSpecFromVegaLite'
+      }
+      runtime = 'runtime'
 
-      vegaLiteMixin.created.call(context);
+      View = sandbox.stub()
+      parse = sandbox.stub()
+      compile = sandbox.stub()
+
+      view = {
+        logLevel: sandbox.stub(),
+        renderer: sandbox.stub(),
+        hover: sandbox.stub()
+      }
+
+      view.logLevel.withArgs(logLevel).returns(view)
+      view.renderer.withArgs('svg').returns(view)
+      view.hover.returns(view)
+
+      compile.withArgs(context.$spec).returns(compilerOutput)
+      parse.withArgs(compilerOutput.spec).returns(runtime)
+      View.withArgs(runtime).returns(view)
+
+      vegaLiteMixin = createVegaLiteMixin({
+        compile,
+        parse,
+        View,
+        logLevel
+      })
+    })
+
+    it('should add description to spec', () => {
+      vegaLiteMixin.created.call(context)
 
       expect(context.$spec.description).to.equal(context.description)
+    })
+
+    it('should compile spec from context and pass it to parser', () => {
+      vegaLiteMixin.created.call(context)
+
+      expect(parse).to.have.been.calledWith(compilerOutput.spec)
+    })
+
+    it('should parse spec and create View within generated runtime', () => {
+      vegaLiteMixin.created.call(context)
+
+      expect(View).to.have.been.calledWith(runtime)
+    })
+
+    it('should create View instance as $vg in a context', () => {
+      vegaLiteMixin.created.call(context)
+
+      expect(context.$vg).to.equal(view)
+    })
+
+    it('should set proper log level, renderer and enable hover', () => {
+      vegaLiteMixin.created.call(context)
+
+      expect(view.logLevel).to.have.been.calledWith(logLevel)
+      expect(view.renderer).to.have.been.calledWith('svg')
+      expect(view.hover).to.have.been.called
     })
   })
 })
