@@ -1,18 +1,5 @@
 <script>
-import * as vega from 'vega';
-import * as vl from 'vega-lite';
-import createVegaLiteMixin from '../mixin/createVegaLiteMixin';
-
-const vegaLiteMixin = createVegaLiteMixin({
-  compile: vl.compile,
-  parse: vega.parse,
-  View: vega.View,
-  logLevel: vega.Debug
-})
-
 export default {
-
-  mixins: [vegaLiteMixin],
 
   data () {
     return {

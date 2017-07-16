@@ -1,7 +1,5 @@
 import * as vegaUtil from 'vega-util'
 import createVegaLiteMixin from 'src/mixin/createVegaLiteMixin';
-import MarkOptionMissedError from 'src/error/MarkOptionMissedError';
-import EncodingOptionMissedError from 'src/error/EncodingOptionMissedError';
 
 const sandbox = sinon.sandbox.create()
 
@@ -26,26 +24,9 @@ describe('createVegaLiteMixin', () => {
           return {values: [1, 2, 3]}
         }
       }
-    })
-
-    it('should throw MarkOptionMissedError if option doesn\'t contain `mark` field', () => {
       context = {
-        $options: Object.assign({encoding: {}}, $options)
+        $options
       }
-
-      expect(() => {
-        vegaLiteMixin.beforeCreate.call(context)
-      }).to.throw(MarkOptionMissedError)
-    })
-
-    it('should throw MarkOptionMissedError if option doesn\'t contain `encoding` field', () => {
-      context = {
-        $options: Object.assign({mark: 'blabla'}, $options)
-      }
-
-      expect(() => {
-        vegaLiteMixin.beforeCreate.call(context)
-      }).to.throw(EncodingOptionMissedError)
     })
 
     it('should create vega spec object from options', () => {
@@ -63,6 +44,12 @@ describe('createVegaLiteMixin', () => {
         mark: 'blabla',
         encoding: {}
       })
+    })
+
+    it('should\'t create $spec because no vega options', () => {
+      vegaLiteMixin.beforeCreate.call(context)
+
+      expect(context.$spec).to.be.undefined
     })
   })
 
@@ -158,6 +145,14 @@ describe('createVegaLiteMixin', () => {
       expect(view.renderer).to.have.been.calledWith('svg')
       expect(view.hover).to.have.been.called
     })
+
+    it('should\'t create $vg if $spec is undefined', () => {
+      let context = {}
+
+      vegaLiteMixin.created.call(context)
+
+      expect(context.$vg).to.be.undefined
+    })
   })
 
   describe('mounted', () => {
@@ -179,10 +174,16 @@ describe('createVegaLiteMixin', () => {
       expect(view.initialize).to.have.been.calledWith(context.$el)
       expect(view.run).to.have.been.called
     })
+
+    it('should\'t fail if $vg undefined', () => {
+      let context = {}
+
+      vegaLiteMixin.mounted.call(context)
+    })
   })
 
   describe('destroyed', () => {
-    it('should finilize view', () => {
+    it('should finalize view', () => {
       let view = {
         finalize: sandbox.stub()
       }
@@ -190,9 +191,15 @@ describe('createVegaLiteMixin', () => {
         $vg: view
       }
 
-      vegaLiteMixin.destroyed.call(context)
+      vegaLiteMixin.beforeDestroy.call(context)
 
       expect(view.finalize).to.have.been.called
+    })
+
+    it('should\'t fail if $vg undefined', () => {
+      let context = {}
+
+      vegaLiteMixin.beforeDestroy.call(context)
     })
   })
 })

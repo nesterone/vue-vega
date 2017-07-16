@@ -1,11 +1,10 @@
-import MarkOptionMissedError from 'src/error/MarkOptionMissedError'
-import EncodingOptionMissedError from 'src/error/EncodingOptionMissedError'
+import isVegaLiteOptions from 'src/util/isVegaLiteOptions'
 
 const SPEC_TEMPLATE = {
   '$schema': 'https://vega.github.io/schema/vega-lite/v2.json'
 };
 
-export default function createVegaLiteMixin (options) {
+export default (options) => {
   return {
 
     template: `<div></div>`,
@@ -17,28 +16,21 @@ export default function createVegaLiteMixin (options) {
     },
 
     beforeCreate () {
-      this.$spec = Object.assign({}, SPEC_TEMPLATE);
-
-      this.$spec.data = this.$options.data();
-
-      const mark = this.$options.mark
-
-      if (!mark) {
-        throw new MarkOptionMissedError()
+      if (!isVegaLiteOptions(this.$options)) {
+        return
       }
 
-      this.$spec.mark = mark;
-
-      const encoding = this.$options.encoding
-
-      if (!encoding) {
-        throw new EncodingOptionMissedError()
-      }
-
-      this.$spec.encoding = encoding;
+      this.$spec = Object.assign({}, SPEC_TEMPLATE)
+      this.$spec.data = this.$options.data()
+      this.$spec.mark = this.$options.mark
+      this.$spec.encoding = this.$options.encoding
     },
 
     created () {
+      if (!this.$spec) {
+        return
+      }
+
       const compile = options.compile
       const parse = options.parse
       const View = options.View
@@ -52,19 +44,26 @@ export default function createVegaLiteMixin (options) {
       const runtime = parse(vegaSpec);
 
       this.$vg = new View(runtime)
-
-      this.$vg.logLevel(logLevel)
+        .logLevel(logLevel)
         .renderer('svg')
         .hover();
     },
 
     mounted () {
+      if (!this.$vg) {
+        return
+      }
+
       this.$vg
         .initialize(this.$el)
         .run();
     },
 
-    destroyed () {
+    beforeDestroy () {
+      if (!this.$vg) {
+        return
+      }
+
       this.$vg.finalize();
     }
   }
