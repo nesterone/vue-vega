@@ -1,7 +1,7 @@
 import { parse, View, Warn } from 'vega'
 import { compile } from 'vega-lite'
 import createVegaLiteMixin from 'src/mixin/createVegaLiteMixin'
-import isVegaOptions from 'src/util/isVegaLiteOptions'
+import vueOptionSpec from 'src/util/vueOptionSpec'
 
 const VueVegaPlugin = {
   install (Vue) {
@@ -9,14 +9,15 @@ const VueVegaPlugin = {
       compile: compile,
       parse: parse,
       View: View,
-      logLevel: Warn
+      logLevel: Warn,
+      vueOptionSpec: vueOptionSpec
     })
 
     Vue.mixin(vegaLiteMixin)
 
     let originalExtend = Vue.extend
     Vue.extend = function (options) {
-      if (isVegaOptions(options)) {
+      if (vueOptionSpec.isVegaLite(options)) {
         if (!options.template && !options.el) {
           options.template = '<div></div>'
         }

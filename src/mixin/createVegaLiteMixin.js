@@ -1,10 +1,10 @@
-import isVegaLiteOptions from 'src/util/isVegaLiteOptions'
-
 const SPEC_TEMPLATE = {
   '$schema': 'https://vega.github.io/schema/vega-lite/v2.json'
 };
 
 export default (options) => {
+  const vueOptionSpec = options.vueOptionSpec
+
   return {
 
     props: {
@@ -14,7 +14,7 @@ export default (options) => {
     },
 
     beforeCreate () {
-      if (!isVegaLiteOptions(this.$options)) {
+      if (!vueOptionSpec.isVegaLite(this.$options)) {
         return
       }
 

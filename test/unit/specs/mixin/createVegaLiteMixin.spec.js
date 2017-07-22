@@ -1,13 +1,18 @@
 import * as vegaUtil from 'vega-util'
 import createVegaLiteMixin from 'src/mixin/createVegaLiteMixin';
 
-const sandbox = sinon.sandbox.create()
-
 describe('createVegaLiteMixin', () => {
   let vegaLiteMixin
+  let vueOptionSpec
+  const sandbox = sinon.sandbox.create()
 
   beforeEach(() => {
-    vegaLiteMixin = createVegaLiteMixin()
+    vueOptionSpec = {
+      isVegaLite: sandbox.stub()
+    }
+    vegaLiteMixin = createVegaLiteMixin({
+      vueOptionSpec: vueOptionSpec
+    })
   })
 
   afterEach(() => {
@@ -29,10 +34,17 @@ describe('createVegaLiteMixin', () => {
       }
     })
 
+    it('should check vue component options for vega spec properties', () => {
+      vegaLiteMixin.beforeCreate.call(context)
+
+      expect(vueOptionSpec.isVegaLite).to.have.been.calledWith(context.$options)
+    })
+
     it('should create vega spec object from options', () => {
       context = {
         $options: Object.assign({encoding: {}, mark: 'blabla'}, $options)
       }
+      vueOptionSpec.isVegaLite.returns(true)
 
       vegaLiteMixin.beforeCreate.call(context)
 
@@ -47,6 +59,8 @@ describe('createVegaLiteMixin', () => {
     })
 
     it('should\'t create $spec because no vega options', () => {
+      vueOptionSpec.isVegaLite.returns(false)
+
       vegaLiteMixin.beforeCreate.call(context)
 
       expect(context.$spec).to.be.undefined

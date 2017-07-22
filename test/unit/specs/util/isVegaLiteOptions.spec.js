@@ -1,8 +1,8 @@
-import isVegaLiteOptions from 'src/util/isVegaLiteOptions'
+import vueOptionSpec from 'src/util/vueOptionSpec'
 
 const sandbox = sinon.sandbox.create()
 
-describe('isVegaLiteOptions', () => {
+describe('vueOptionSpec', () => {
   let options
 
   beforeEach(() => {
@@ -17,20 +17,22 @@ describe('isVegaLiteOptions', () => {
     sandbox.restore()
   })
 
-  it('should be false if options don\'t contain `mark` field', () => {
-    options = Object.assign({encoding: {}}, options)
-    expect(isVegaLiteOptions(options)).to.be.false
-  })
+  describe('isVegaLite', () => {
+    it('should be false if options don\'t contain `mark` field', () => {
+      options = Object.assign({encoding: {}}, options)
+      expect(vueOptionSpec.isVegaLite(options)).to.be.false
+    })
 
-  it('should be false if options don\'t contain `encoding` field', () => {
-    options = Object.assign({mark: 'blabla'}, options)
-    expect(isVegaLiteOptions(options)).to.be.false
-  })
+    it('should be false if options don\'t contain `encoding` field', () => {
+      options = Object.assign({mark: 'blabla'}, options)
+      expect(vueOptionSpec.isVegaLite(options)).to.be.false
+    })
 
-  it('should be false if options don\'t contain `data` field', () => {
-    delete options.data
-    options = Object.assign({mark: 'blabla', encoding: {}}, options)
+    it('should be false if options don\'t contain `data` field', () => {
+      delete options.data
+      options = Object.assign({mark: 'blabla', encoding: {}}, options)
 
-    expect(isVegaLiteOptions(options)).to.be.false
+      expect(vueOptionSpec.isVegaLite(options)).to.be.false
+    })
   })
 })
