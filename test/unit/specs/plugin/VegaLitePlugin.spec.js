@@ -1,13 +1,14 @@
 import VegaLitePlugin from 'src/plugin/VegaLitePlugin';
 
 describe('VegaLitePlugin', () => {
-  const sandbox = sinon.sandbox.create()
   let vegaLitePlugin
   let vegaLiteMixin
   let vueExtendProxy
   let Vue
   let proxiedExtend
   let originalExtend
+  let vueOptionSpec
+  const sandbox = sinon.sandbox.create()
 
   beforeEach(() => {
     vegaLiteMixin = sandbox.stub()
@@ -20,13 +21,16 @@ describe('VegaLitePlugin', () => {
       extend: originalExtend
     }
 
-    vueExtendProxy
-      .withArgs(Vue.extend)
-      .returns(proxiedExtend)
+    vueOptionSpec = {
+      isTemplateRequired: sandbox.stub()
+    }
+
+    vueExtendProxy.returns(proxiedExtend)
 
     vegaLitePlugin = new VegaLitePlugin({
       mixin: vegaLiteMixin,
-      vueExtendProxy: vueExtendProxy
+      vueExtendProxy: vueExtendProxy,
+      vueOptionSpec: vueOptionSpec
     })
   })
 
@@ -44,7 +48,10 @@ describe('VegaLitePlugin', () => {
     it('should call hook with original Vue extend', () => {
       vegaLitePlugin.install(Vue)
 
-      expect(vueExtendProxy).to.have.been.calledWith(originalExtend);
+      expect(vueExtendProxy).to.have.been.calledWith({
+        extendFn: originalExtend,
+        vueOptionSpec: vueOptionSpec
+      });
     })
 
     it('should replace original extend with proxied version', () => {
