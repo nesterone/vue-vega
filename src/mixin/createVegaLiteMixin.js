@@ -7,8 +7,6 @@ const SPEC_TEMPLATE = {
 export default (options) => {
   return {
 
-    template: `<div></div>`,
-
     props: {
       description: {
         type: String
