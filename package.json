@@ -7,9 +7,10 @@
   "scripts": {
     "dev": "node build/dev-server.js",
     "start": "node build/dev-server.js",
-    "bundle:web": "rm -rf dist && BUILD=web webpack --config build/webpack.bundle.conf.js",
-    "bundle:lib": "rm -rf lib && BUILD=lib babel src --out-dir lib",
-    "build": "node build/build.js",
+    "build:bundle": "rm -rf dist && BUILD=web webpack --config build/webpack.bundle.conf.js",
+    "build:lib": "rm -rf lib && BUILD=lib babel src --out-dir lib",
+    "build": "npm run build:lib && npm run build:bundle",
+    "docs": "rm -rf gh-pages && mkdir gh-pages && node build/docs.js",
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
     "test": "npm run unit",
     "lint": "eslint --ext .js,.vue src test/unit/specs"

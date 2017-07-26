@@ -1,5 +1,4 @@
 const webpack = require('webpack')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
 const base = require('./webpack.base.conf')
 const config = require('../config')
 
@@ -13,7 +12,7 @@ base.entry = {
 base.output = {
   path: config.bundle.assetsRoot,
   publicPath: config.bundle.assetsPublicPath,
-  filename: 'vue-vega.min.js',
+  filename: '[name].min.js',
   libraryTarget: 'umd',
   library: 'VueVega'
 }

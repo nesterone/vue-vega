@@ -2,13 +2,12 @@
 node_modules/
 dist/
 lib/
-npm-debug.log*
 test/unit/coverage
+gh-pages/
 
 # Editor directories and files
 .idea
 *.iml
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
+
+# Logs
+npm-debug.log
