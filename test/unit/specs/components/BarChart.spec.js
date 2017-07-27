@@ -1,6 +1,6 @@
 import Vue from 'vue'
-import BarChart from 'src/components/BarChart'
-import VueVegaPlugin from 'src/index'
+import BarChart from 'examples/BarChart'
+import VueVegaPlugin from 'vue-vega'
 
 describe('BarChart.vue', () => {
   let LocalVue = Vue.extend({})

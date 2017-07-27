@@ -1,6 +1,6 @@
 var path = require('path')
-var utils = require('./utils')
 var config = require('../config')
+var utils = require('./utils')
 var vueLoaderConfig = require('./vue-loader.conf')
 
 function resolve (dir) {
@@ -9,18 +9,28 @@ function resolve (dir) {
 
 module.exports = {
   entry: {
-    app: './src/main.js'
+    app: './docs/main.js'
   },
   output: {
     path: config.docs.assetsRoot,
     filename: '[name].js',
-    publicPath: process.env.NODE_ENV === 'production' ? config.docs.assetsPublicPath : config.dev.assetsPublicPath
+    publicPath: process.env.NODE_ENV === 'production'
+      ? config.docs.assetsPublicPath
+      : config.dev.assetsPublicPath
   },
   resolve: {
     extensions: ['.js', '.vue', '.json'],
+    modules: [
+      resolve('src'),
+      resolve('docs'),
+      resolve('node_modules')
+    ],
     alias: {
-      'vue$': 'vue/dist/vue.esm.js',
-      'src': path.resolve(__dirname, '../src')
+      'vue$': 'vue/dist/vue',
+      'vue-vega': path.resolve(__dirname, '../src/index'), // for consistent docs
+      'src': path.resolve(__dirname, '../src'),
+      'assets': path.resolve(__dirname, '../docs/assets'),
+      'examples': path.resolve(__dirname, '../docs/components')
     }
   },
   module: {
@@ -42,28 +52,25 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        include: [resolve('src'), resolve('test')]
+        include: [resolve('src'), resolve('docs'), resolve('test')]
+      },
+      {
+        test: /\.pug$/,
+        use: 'pug-loader',
+        include: [resolve('src'), resolve('docs')]
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url-loader',
-        options: {
+        query: {
           limit: 10000,
           name: utils.assetsPath('img/[name].[hash:7].[ext]')
         }
       },
       {
-        test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
-        loader: 'url-loader',
-        options: {
-          limit: 10000,
-          name: utils.assetsPath('media/[name].[hash:7].[ext]')
-        }
-      },
-      {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
         loader: 'url-loader',
-        options: {
+        query: {
           limit: 10000,
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }

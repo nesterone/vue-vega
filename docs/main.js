@@ -3,7 +3,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 
-import VueVegaPlugin from './index'
+import VueVegaPlugin from 'src/index'
 
 Vue.config.productionTip = false
 Vue.use(VueVegaPlugin)
