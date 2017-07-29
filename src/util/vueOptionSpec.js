@@ -7,7 +7,7 @@ function isVegaLite (options) {
 }
 
 function isTemplateRequired (options) {
-  const isPossibleToRenderComponent = options.el || options.template
+  const isPossibleToRenderComponent = options.el || options.template || options.render
 
   return isVegaLite(options) && !isPossibleToRenderComponent
 }

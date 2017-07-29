@@ -19,7 +19,7 @@ module.exports = {
       : config.dev.assetsPublicPath
   },
   resolve: {
-    extensions: ['.js', '.vue', '.json'],
+    extensions: ['.pug', '.js', '.vue', '.json'],
     modules: [
       resolve('src'),
       resolve('docs'),
@@ -30,7 +30,7 @@ module.exports = {
       'vue-vega': path.resolve(__dirname, '../src/index'), // for consistent docs
       'src': path.resolve(__dirname, '../src'),
       'assets': path.resolve(__dirname, '../docs/assets'),
-      'examples': path.resolve(__dirname, '../docs/components')
+      'examples': path.resolve(__dirname, '../docs/partials/examples')
     }
   },
   module: {

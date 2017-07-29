@@ -1,5 +1,11 @@
+<template>
+  <div id='app'>
+    <BarChart description='A simple bar chart with embedded data'></BarChart>
+  </div>
+</template>
+
 <script>
-  export default {
+  const BarChart = {
 
     data () {
       return {
@@ -10,13 +16,14 @@
         ]
       }
     },
-
     mark: 'bar',
-
     encoding: {
       x: {field: 'a', type: 'ordinal'},
       y: {field: 'b', type: 'quantitative'}
     }
   }
-</script>
 
+  export default {
+    components: {BarChart}
+  }
+</script>
