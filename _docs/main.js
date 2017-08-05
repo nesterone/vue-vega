@@ -50,16 +50,6 @@ new Vue({
     }
   },
   methods: {
-    pickVersion (version) {
-      switch (version) {
-        case 'v1.x':
-          window.location.assign('v1/index.html')
-          break
-        case 'v2.0':
-          window.location.assign('https://monterail.github.io/vue-multiselect/')
-          break
-      }
-    },
     selectLanguage (lang) {
       this.markupLanguage = lang
     },

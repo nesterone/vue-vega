@@ -4,7 +4,7 @@
 
 Vega Lite Gramma extension
 
-Origianl Vega gramma file
+Original Vega gramma file
 
 ```
 {
