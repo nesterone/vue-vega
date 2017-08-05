@@ -60,6 +60,9 @@ npm run build:bundle
 # build the _docs into docs
 npm run build:docs
 
+# build all
+npm run build
+
 # run unit tests
 npm run test
 ```
