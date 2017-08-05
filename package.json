@@ -9,8 +9,8 @@
     "start": "node build/dev-server.js",
     "build:bundle": "rm -rf dist && BUILD=web webpack --config build/webpack.bundle.conf.js",
     "build:lib": "rm -rf lib && BUILD=lib babel src --out-dir lib",
-    "build": "npm run build:lib && npm run build:bundle",
-    "docs": "rm -rf gh-pages && mkdir gh-pages && node build/docs.js",
+    "build:docs": "rm -rf docs && mkdir docs && node build/docs.js",
+    "build": "npm run build:lib && npm run build:bundle && npm run build:docs",
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
     "test": "npm run unit",
     "lint": "eslint --ext .js,.vue src test/unit/specs"

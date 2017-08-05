@@ -2,3 +2,4 @@ build/*.js
 config/*.js
 lib/
 dist/
+docs/

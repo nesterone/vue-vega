@@ -1,9 +1,7 @@
 .DS_Store
 node_modules/
-dist/
 lib/
 test/unit/coverage
-gh-pages/
 
 # Editor directories and files
 .idea

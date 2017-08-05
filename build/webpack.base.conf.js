@@ -9,7 +9,7 @@ function resolve (dir) {
 
 module.exports = {
   entry: {
-    app: './docs/main.js'
+    app: './_docs/main.js'
   },
   output: {
     path: config.docs.assetsRoot,
@@ -22,15 +22,15 @@ module.exports = {
     extensions: ['.pug', '.js', '.vue', '.json'],
     modules: [
       resolve('src'),
-      resolve('docs'),
+      resolve('_docs'),
       resolve('node_modules')
     ],
     alias: {
       'vue$': 'vue/dist/vue',
       'vue-vega': path.resolve(__dirname, '../src/index'), // for consistent docs
       'src': path.resolve(__dirname, '../src'),
-      'assets': path.resolve(__dirname, '../docs/assets'),
-      'examples': path.resolve(__dirname, '../docs/partials/examples')
+      'assets': path.resolve(__dirname, '../_docs/assets'),
+      'examples': path.resolve(__dirname, '../_docs/partials/examples')
     }
   },
   module: {
@@ -52,12 +52,12 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        include: [resolve('src'), resolve('docs'), resolve('test')]
+        include: [resolve('src'), resolve('_docs'), resolve('test')]
       },
       {
         test: /\.pug$/,
         use: 'pug-loader',
-        include: [resolve('src'), resolve('docs')]
+        include: [resolve('src'), resolve('_docs')]
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
