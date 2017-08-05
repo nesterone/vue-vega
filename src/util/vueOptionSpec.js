@@ -1,4 +1,4 @@
-function isVegaLite (options) {
+function isVegaLiteCompatible (options) {
   const isDataAvailable = Boolean(options.data)
   const isMarkAvailable = Boolean(options.mark)
   const isEncodingAvailable = Boolean(options.encoding)
@@ -9,10 +9,10 @@ function isVegaLite (options) {
 function isTemplateRequired (options) {
   const isPossibleToRenderComponent = options.el || options.template || options.render
 
-  return isVegaLite(options) && !isPossibleToRenderComponent
+  return isVegaLiteCompatible(options) && !isPossibleToRenderComponent
 }
 
 export default {
-  isVegaLite,
+  isVegaLiteCompatible,
   isTemplateRequired
 }

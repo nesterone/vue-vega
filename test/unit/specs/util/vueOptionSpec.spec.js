@@ -16,22 +16,22 @@ describe('vueOptionSpec', () => {
     sandbox.restore()
   })
 
-  describe('isVegaLite', () => {
+  describe('isVegaLiteCompatible', () => {
     it('should be false if options don\'t contain `mark` field', () => {
       options = Object.assign({encoding: {}}, options)
-      expect(vueOptionSpec.isVegaLite(options)).to.be.false
+      expect(vueOptionSpec.isVegaLiteCompatible(options)).to.be.false
     })
 
     it('should be false if options don\'t contain `encoding` field', () => {
       options = Object.assign({mark: 'blabla'}, options)
-      expect(vueOptionSpec.isVegaLite(options)).to.be.false
+      expect(vueOptionSpec.isVegaLiteCompatible(options)).to.be.false
     })
 
     it('should be false if options don\'t contain `data` field', () => {
       delete options.data
       options = Object.assign({mark: 'blabla', encoding: {}}, options)
 
-      expect(vueOptionSpec.isVegaLite(options)).to.be.false
+      expect(vueOptionSpec.isVegaLiteCompatible(options)).to.be.false
     })
   })
 

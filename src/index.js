@@ -3,6 +3,7 @@ import { compile } from 'vega-lite'
 import createVegaLiteMixin from 'src/mixin/createVegaLiteMixin'
 import vueExtendProxy from 'src/util/vueExtendProxy'
 import vueOptionSpec from 'src/util/vueOptionSpec'
+import VegaLiteComponent from 'src/component/VegaLiteComponent'
 import VegaLitePlugin from 'src/plugin/VegaLitePlugin'
 
 const mixin = createVegaLiteMixin({
@@ -16,7 +17,8 @@ const mixin = createVegaLiteMixin({
 const vegaLitePlugin = new VegaLitePlugin({
   mixin,
   vueExtendProxy,
-  vueOptionSpec
+  vueOptionSpec,
+  VegaLiteComponent
 })
 
 export default vegaLitePlugin

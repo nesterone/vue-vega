@@ -1,8 +1,9 @@
 export default class VegaLitePlugin {
-  constructor ({mixin, vueExtendProxy, vueOptionSpec}) {
+  constructor ({mixin, vueExtendProxy, vueOptionSpec, VegaLiteComponent}) {
     this.mixin = mixin
     this.vueExtendProxy = vueExtendProxy
     this.vueOptionSpec = vueOptionSpec
+    this.VegaLiteComponent = VegaLiteComponent
   }
 
   install (Vue) {
@@ -12,5 +13,7 @@ export default class VegaLitePlugin {
       extendFn: Vue.extend,
       vueOptionSpec: this.vueOptionSpec
     })
+
+    Vue.component('vega-lite', this.VegaLiteComponent)
   }
 }

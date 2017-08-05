@@ -1,5 +1,7 @@
-import BarChartAsComponent from './BarChartAsComponent'
+import ComponentAsVegaLiteSpecExample from './ComponentAsVegaLiteSpecExample'
+import VegaLiteComponentExample from './VegaLiteComponentExample'
 
 export {
-  BarChartAsComponent
+  ComponentAsVegaLiteSpecExample,
+  VegaLiteComponentExample
 }

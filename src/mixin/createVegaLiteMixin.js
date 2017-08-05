@@ -14,7 +14,7 @@ export default (options) => {
     },
 
     beforeCreate () {
-      if (!vueOptionSpec.isVegaLite(this.$options)) {
+      if (!vueOptionSpec.isVegaLiteCompatible(this.$options)) {
         return
       }
 

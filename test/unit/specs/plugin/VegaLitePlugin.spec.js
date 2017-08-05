@@ -8,6 +8,7 @@ describe('VegaLitePlugin', () => {
   let proxiedExtend
   let originalExtend
   let vueOptionSpec
+  let VegaLiteComponent
   const sandbox = sinon.sandbox.create()
 
   beforeEach(() => {
@@ -18,19 +19,23 @@ describe('VegaLitePlugin', () => {
 
     Vue = {
       mixin: sandbox.stub(),
-      extend: originalExtend
+      extend: originalExtend,
+      component: sandbox.stub()
     }
 
     vueOptionSpec = {
       isTemplateRequired: sandbox.stub()
     }
 
+    VegaLiteComponent = sandbox.stub();
+
     vueExtendProxy.returns(proxiedExtend)
 
     vegaLitePlugin = new VegaLitePlugin({
       mixin: vegaLiteMixin,
       vueExtendProxy: vueExtendProxy,
-      vueOptionSpec: vueOptionSpec
+      vueOptionSpec: vueOptionSpec,
+      VegaLiteComponent: VegaLiteComponent
     })
   })
 
@@ -44,7 +49,7 @@ describe('VegaLitePlugin', () => {
     expect(Vue.mixin).to.have.been.calledWith(vegaLiteMixin)
   })
 
-  describe('appling proxy for Vue extend', () => {
+  describe('applying proxy for Vue extend', () => {
     it('should call hook with original Vue extend', () => {
       vegaLitePlugin.install(Vue)
 
@@ -58,6 +63,12 @@ describe('VegaLitePlugin', () => {
       vegaLitePlugin.install(Vue)
 
       expect(Vue.extend).to.equal(proxiedExtend)
+    })
+
+    it('should register VegaLiteComponent as `vega-lite`', () => {
+      vegaLitePlugin.install(Vue)
+
+      expect(Vue.component).to.have.been.calledWith('vega-lite', VegaLiteComponent)
     })
   })
 })

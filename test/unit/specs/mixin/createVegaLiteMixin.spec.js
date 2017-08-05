@@ -8,7 +8,7 @@ describe('createVegaLiteMixin', () => {
 
   beforeEach(() => {
     vueOptionSpec = {
-      isVegaLite: sandbox.stub()
+      isVegaLiteCompatible: sandbox.stub()
     }
     vegaLiteMixin = createVegaLiteMixin({
       vueOptionSpec: vueOptionSpec
@@ -37,14 +37,14 @@ describe('createVegaLiteMixin', () => {
     it('should check vue component options for vega spec properties', () => {
       vegaLiteMixin.beforeCreate.call(context)
 
-      expect(vueOptionSpec.isVegaLite).to.have.been.calledWith(context.$options)
+      expect(vueOptionSpec.isVegaLiteCompatible).to.have.been.calledWith(context.$options)
     })
 
     it('should create vega spec object from options', () => {
       context = {
         $options: Object.assign({encoding: {}, mark: 'blabla'}, $options)
       }
-      vueOptionSpec.isVegaLite.returns(true)
+      vueOptionSpec.isVegaLiteCompatible.returns(true)
 
       vegaLiteMixin.beforeCreate.call(context)
 
@@ -59,7 +59,7 @@ describe('createVegaLiteMixin', () => {
     })
 
     it('should\'t create $spec because no vega options', () => {
-      vueOptionSpec.isVegaLite.returns(false)
+      vueOptionSpec.isVegaLiteCompatible.returns(false)
 
       vegaLiteMixin.beforeCreate.call(context)
 
