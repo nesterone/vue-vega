@@ -1,27 +1,11 @@
-const SPEC_TEMPLATE = {
-  '$schema': 'https://vega.github.io/schema/vega-lite/v2.json'
-};
-
-export default (options) => {
-  const vueOptionSpec = options.vueOptionSpec
+export default function createVegaLiteMixin (options) {
+  const vueVegaOptionHelper = options.vueVegaOptionHelper
 
   return {
-
-    props: {
-      description: {
-        type: String
-      }
-    },
-
     beforeCreate () {
-      if (!vueOptionSpec.isVegaLiteCompatible(this.$options)) {
-        return
+      if (vueVegaOptionHelper.shouldCreateVegaSpec(this.$options)) {
+        this.$spec = vueVegaOptionHelper.getVegaSpec(this.$options)
       }
-
-      this.$spec = Object.assign({}, SPEC_TEMPLATE)
-      this.$spec.data = this.$options.data()
-      this.$spec.mark = this.$options.mark
-      this.$spec.encoding = this.$options.encoding
     },
 
     created () {

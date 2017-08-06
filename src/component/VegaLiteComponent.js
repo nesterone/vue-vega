@@ -5,11 +5,9 @@ export default {
     mark: {
       type: String
     },
-    data: {
-      type: Object
-    },
     encoding: {
       type: Object
-    }
+    },
+    data: [Object, Array]
   }
 }

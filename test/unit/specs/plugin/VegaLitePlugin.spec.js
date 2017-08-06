@@ -7,7 +7,7 @@ describe('VegaLitePlugin', () => {
   let Vue
   let proxiedExtend
   let originalExtend
-  let vueOptionSpec
+  let vueVegaOptionHelper
   let VegaLiteComponent
   const sandbox = sinon.sandbox.create()
 
@@ -23,7 +23,7 @@ describe('VegaLitePlugin', () => {
       component: sandbox.stub()
     }
 
-    vueOptionSpec = {
+    vueVegaOptionHelper = {
       isTemplateRequired: sandbox.stub()
     }
 
@@ -34,7 +34,7 @@ describe('VegaLitePlugin', () => {
     vegaLitePlugin = new VegaLitePlugin({
       mixin: vegaLiteMixin,
       vueExtendProxy: vueExtendProxy,
-      vueOptionSpec: vueOptionSpec,
+      vueVegaOptionHelper: vueVegaOptionHelper,
       VegaLiteComponent: VegaLiteComponent
     })
   })
@@ -55,7 +55,7 @@ describe('VegaLitePlugin', () => {
 
       expect(vueExtendProxy).to.have.been.calledWith({
         extendFn: originalExtend,
-        vueOptionSpec: vueOptionSpec
+        vueVegaOptionHelper: vueVegaOptionHelper
       });
     })
 

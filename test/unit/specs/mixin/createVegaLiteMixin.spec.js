@@ -3,15 +3,16 @@ import createVegaLiteMixin from 'src/mixin/createVegaLiteMixin';
 
 describe('createVegaLiteMixin', () => {
   let vegaLiteMixin
-  let vueOptionSpec
+  let vueVegaOptionHelper
   const sandbox = sinon.sandbox.create()
 
   beforeEach(() => {
-    vueOptionSpec = {
-      isVegaLiteCompatible: sandbox.stub()
+    vueVegaOptionHelper = {
+      getVegaSpec: sandbox.stub(),
+      shouldCreateVegaSpec: sandbox.stub()
     }
     vegaLiteMixin = createVegaLiteMixin({
-      vueOptionSpec: vueOptionSpec
+      vueVegaOptionHelper
     })
   })
 
@@ -34,32 +35,32 @@ describe('createVegaLiteMixin', () => {
       }
     })
 
-    it('should check vue component options for vega spec properties', () => {
+    it('should check for vega spec', () => {
       vegaLiteMixin.beforeCreate.call(context)
 
-      expect(vueOptionSpec.isVegaLiteCompatible).to.have.been.calledWith(context.$options)
+      expect(vueVegaOptionHelper.shouldCreateVegaSpec).to.have.been.calledWith(context.$options)
     })
 
-    it('should create vega spec object from options', () => {
-      context = {
-        $options: Object.assign({encoding: {}, mark: 'blabla'}, $options)
-      }
-      vueOptionSpec.isVegaLiteCompatible.returns(true)
+    it('should get spec object from options', () => {
+      vueVegaOptionHelper.shouldCreateVegaSpec.returns(true)
 
       vegaLiteMixin.beforeCreate.call(context)
 
-      expect(context.$spec).to.deep.equal({
-        '$schema': 'https://vega.github.io/schema/vega-lite/v2.json',
-        data: {
-          values: [1, 2, 3]
-        },
-        mark: 'blabla',
-        encoding: {}
-      })
+      expect(vueVegaOptionHelper.getVegaSpec).to.have.been.calledWith(context.$options)
     })
 
-    it('should\'t create $spec because no vega options', () => {
-      vueOptionSpec.isVegaLiteCompatible.returns(false)
+    it('should create $spec from options', () => {
+      const spec = {test: 'test'}
+      vueVegaOptionHelper.shouldCreateVegaSpec.returns(true)
+      vueVegaOptionHelper.getVegaSpec.returns(spec)
+
+      vegaLiteMixin.beforeCreate.call(context)
+
+      expect(context.$spec).to.equal(spec)
+    })
+
+    it('should`t create $spec because no vega options', () => {
+      vueVegaOptionHelper.shouldCreateVegaSpec.returns(false)
 
       vegaLiteMixin.beforeCreate.call(context)
 

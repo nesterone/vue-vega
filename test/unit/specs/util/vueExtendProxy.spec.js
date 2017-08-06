@@ -4,7 +4,7 @@ describe('vueExtendProxy', () => {
   let Vue
   let proxiedExtend
   let options
-  let vueOptionSpec
+  let vueVegaOptionHelper
   const sandbox = sinon.sandbox.create()
 
   beforeEach(() => {
@@ -12,7 +12,7 @@ describe('vueExtendProxy', () => {
       extend: sandbox.stub()
     }
 
-    vueOptionSpec = {
+    vueVegaOptionHelper = {
       isTemplateRequired: sandbox.stub()
     }
 
@@ -23,7 +23,7 @@ describe('vueExtendProxy', () => {
 
     proxiedExtend = vueExtendProxy({
       extendFn: Vue.extend,
-      vueOptionSpec: vueOptionSpec
+      vueVegaOptionHelper: vueVegaOptionHelper
     })
   })
 
@@ -36,11 +36,11 @@ describe('vueExtendProxy', () => {
 
     proxiedExtend(options)
 
-    expect(vueOptionSpec.isTemplateRequired).to.have.been.calledWith(options)
+    expect(vueVegaOptionHelper.isTemplateRequired).to.have.been.calledWith(options)
   })
 
   it('should add template to options if template required', () => {
-    vueOptionSpec.isTemplateRequired.returns(true)
+    vueVegaOptionHelper.isTemplateRequired.returns(true)
 
     proxiedExtend(options)
 
@@ -48,7 +48,7 @@ describe('vueExtendProxy', () => {
   })
 
   it('should`t add template to options if template isn`t required', () => {
-    vueOptionSpec.isTemplateRequired.returns(false)
+    vueVegaOptionHelper.isTemplateRequired.returns(false)
 
     proxiedExtend(options)
 
