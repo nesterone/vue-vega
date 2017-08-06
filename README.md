@@ -7,7 +7,7 @@ Visualization Grammar for Vue.js
 * Vega-lite support from 2.0.0
 * Dependencies on vega and vega-lite
 * Vue components as vega specs
-* `vl-spec` component to use in template
+* `vega-lite` component to use in template
 * +99% test coverage
 
 ## Install & basic usage
@@ -18,7 +18,7 @@ Visualization Grammar for Vue.js
 
 ```vue
 <template>
-  <vl-spec
+  <vega-lite
     :data="values"
     :mark="bar"
     :encoding="{
