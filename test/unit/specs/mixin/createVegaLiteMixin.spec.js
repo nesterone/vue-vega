@@ -141,6 +141,12 @@ describe('createVegaLiteMixin', () => {
       expect(parse).to.have.been.calledWith(compilerOutput.spec)
     })
 
+    it('should add compiled spec to component', () => {
+      vegaLiteMixin.created.call(context)
+
+      expect(context.$compiledSpec).to.equal(compilerOutput.spec)
+    })
+
     it('should parse spec and create View within generated runtime', () => {
       vegaLiteMixin.created.call(context)
 
@@ -211,10 +217,44 @@ describe('createVegaLiteMixin', () => {
       expect(view.finalize).to.have.been.called
     })
 
-    it('should\'t fail if $vg undefined', () => {
+    it('should`t fail if $vg undefined', () => {
       let context = {}
 
       vegaLiteMixin.beforeDestroy.call(context)
+    })
+  })
+
+  describe('watchers', () => {
+    let vegaView
+    let context
+    let changeset
+
+    beforeEach(() => {
+      vegaView = {
+        change: sandbox.stub(),
+        run: sandbox.stub()
+      }
+      vegaView.change.returns(vegaView)
+
+      context = {
+        $vg: vegaView,
+        $compiledSpec: {
+          data: [{name: 'testDataSet'}]
+        }
+      }
+
+      changeset = sandbox.stub()
+      changeset.remove = sandbox.stub().returns(changeset)
+      changeset.insert = sandbox.stub().returns(changeset)
+      changeset.returns(changeset)
+
+      vegaLiteMixin = createVegaLiteMixin({changeset})
+    })
+
+    it('should change view if it was attached to component', () => {
+      vegaLiteMixin.watch.data.call(context)
+
+      expect(vegaView.change).to.have.been.called
     })
   })
 })

@@ -1,4 +1,4 @@
-import { parse, View, Warn } from 'vega'
+import { parse, View, Warn, changeset } from 'vega'
 import { compile } from 'vega-lite'
 import createVegaLiteMixin from 'src/mixin/createVegaLiteMixin'
 import vueExtendProxy from 'src/util/vueExtendProxy'
@@ -9,6 +9,7 @@ import VegaLitePlugin from 'src/plugin/VegaLitePlugin'
 const vueVegaOptionHelper = new VueVegaOptionHelper()
 
 const mixin = createVegaLiteMixin({
+  changeset: changeset,
   compile: compile,
   parse: parse,
   View: View,

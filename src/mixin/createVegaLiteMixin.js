@@ -1,5 +1,6 @@
 export default function createVegaLiteMixin (options) {
   const vueVegaOptionHelper = options.vueVegaOptionHelper
+  const changeset = options.changeset
 
   return {
     beforeCreate () {
@@ -21,10 +22,9 @@ export default function createVegaLiteMixin (options) {
       if (this.description) {
         this.$spec.description = this.description;
       }
+      this.$compiledSpec = compile(this.$spec).spec;
 
-      const vegaSpec = compile(this.$spec).spec;
-      const runtime = parse(vegaSpec);
-
+      const runtime = parse(this.$compiledSpec);
       this.$vg = new View(runtime)
         .logLevel(logLevel)
         .renderer('svg')
@@ -47,6 +47,18 @@ export default function createVegaLiteMixin (options) {
       }
 
       this.$vg.finalize();
+    },
+
+    watch: {
+      data: function (nextData, prevData) {
+        const vegaView = this.$vg
+
+        if (vegaView) {
+          let originalDataSetName = this.$compiledSpec.data[0].name;
+          const dataChangeset = changeset().remove(prevData).insert(nextData)
+          vegaView.change(originalDataSetName, dataChangeset).run()
+        }
+      }
     }
   }
 }
