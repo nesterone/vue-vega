@@ -228,6 +228,7 @@ describe('createVegaLiteMixin', () => {
     let vegaView
     let context
     let changeset
+    let dataSetName
 
     beforeEach(() => {
       vegaView = {
@@ -236,10 +237,12 @@ describe('createVegaLiteMixin', () => {
       }
       vegaView.change.returns(vegaView)
 
+      dataSetName = 'testDataSet'
+
       context = {
         $vg: vegaView,
         $compiledSpec: {
-          data: [{name: 'testDataSet'}]
+          data: [{name: dataSetName}]
         }
       }
 
@@ -255,6 +258,25 @@ describe('createVegaLiteMixin', () => {
       vegaLiteMixin.watch.data.call(context)
 
       expect(vegaView.change).to.have.been.called
+    })
+
+    it('should remove previous and insert next data to changeset', () => {
+      const nextData = [1, 2, 3]
+      const prevData = [-3, -2, -1]
+
+      vegaLiteMixin.watch.data.call(context, nextData, prevData)
+
+      expect(changeset.remove).to.have.been.calledWith(prevData)
+      expect(changeset.remove).to.have.been.calledBefore(changeset.insert)
+      expect(changeset.insert).to.have.been.calledWith(nextData)
+    })
+
+    it('should change view`s dataset and trigger re-render', () => {
+      vegaLiteMixin.watch.data.call(context)
+
+      expect(vegaView.change).to.have.been.calledWith(dataSetName, changeset)
+      expect(vegaView.change).to.have.been.calledBefore(vegaView.run)
+      expect(vegaView.run).to.have.been.called
     })
   })
 })
