@@ -1,7 +1,7 @@
 <template>
   <div>
-    <multiselect v-model="markValue" :options="marks" :searchable="false" :close-on-select="true" :show-labels="false" placeholder="Pick a mark"></multiselect>
-    <vega-lite :data="values" mark="bar" :encoding="{ x: {field: 'a', type: 'ordinal'}, y: {field: 'b', type: 'quantitative'} }"/>
+    <multiselect v-model="selectedMark" :options="marks" :searchable="false" :close-on-select="true" :show-labels="false" placeholder="Pick a mark"></multiselect>
+    <vega-lite :data="values" :mark="selectedMark" :encoding="{ x: {field: 'a', type: 'ordinal'}, y: {field: 'b', type: 'quantitative'} }"/>
   </div>
 </template>
 
@@ -19,7 +19,7 @@
           {a: 'D', b: 91}, {a: 'E', b: 81}, {a: 'F', b: 53},
           {a: 'G', b: 19}, {a: 'H', b: 87}, {a: 'I', b: 52}
         ],
-        markValue: '',
+        selectedMark: 'bar',
         marks: ['bar', 'point', 'circle', 'line']
       }
     }
