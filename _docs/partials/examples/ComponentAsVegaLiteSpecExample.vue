@@ -1,11 +1,10 @@
-<template>
-  <div id='app'>
-    <BarChartVegaSpec/>
-  </div>
+<template lang="pug">
+  div(id="app")
+    bar-chart
 </template>
 
 <script>
-  const BarChartVegaSpec = {
+  const BarChart = {
     data () {
       return {
         values: [
@@ -24,7 +23,7 @@
 
   export default {
     components: {
-      BarChartVegaSpec
+      BarChart
     }
   }
 </script>

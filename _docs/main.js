@@ -31,8 +31,8 @@ new Vue({
   },
   data () {
     return {
-      markupLangs: ['html'],
-      markupLanguage: 'html',
+      markupLangs: ['pug', 'html'],
+      markupLanguage: 'pug',
       isNavSticky: false,
       firstColor: Math.floor(Math.random() * 255),
       secondColor: Math.floor(Math.random() * 255),

@@ -1,5 +1,9 @@
-<template>
-  <vega-lite :data="values" mark="bar" :encoding="{ x: {field: 'a', type: 'ordinal'}, y: {field: 'b', type: 'quantitative'} }"/>
+<template lang="pug">
+  vega-lite(
+    :data="values",
+    mark="bar",
+    :encoding="{ x: {field: 'a', type: 'ordinal'}, y: {field: 'b', type: 'quantitative'} }"
+  )
 </template>
 
 <script>

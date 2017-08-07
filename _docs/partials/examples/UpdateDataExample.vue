@@ -1,8 +1,11 @@
-<template>
-  <div>
-    <vega-lite mark="bar" :encoding="{x: {bin: true, field: 'val', type: 'quantitative'}, y: {aggregate: 'count', type: 'quantitative'} }" :data="values"></vega-lite>
-    <button @click="refreshNumbers">Refresh</button>
-  </div>
+<template lang="pug">
+  div
+    vega-lite(
+      mark="bar",
+      :data="values",
+      :encoding="{x: {bin: true, field: 'val', type: 'quantitative'}, y: {aggregate: 'count', type: 'quantitative'} }"
+    )
+    button(@click="refreshNumbers") Refresh
 </template>
 
 <script>

@@ -1,8 +1,19 @@
-<template>
-  <div>
-    <multiselect v-model="selectedMark" :options="marks" :searchable="false" :close-on-select="true" :show-labels="false" placeholder="Pick a mark"></multiselect>
-    <vega-lite :data="values" :mark="selectedMark" :encoding="{ x: {field: 'a', type: 'ordinal'}, y: {field: 'b', type: 'quantitative'} }"/>
-  </div>
+<template lang="pug">
+  div
+    multiselect(
+      v-model="selectedMark",
+      :options="marks",
+      :searchable="false",
+      :close-on-select="true",
+      :show-labels="false",
+      placeholder="Pick a mark"
+    )
+    vega-lite(
+      :data="values",
+      :mark="selectedMark",
+      :encoding="{ x: {field: 'a', type: 'ordinal'}, y: {field: 'b', type: 'quantitative'} }"
+    )
+
 </template>
 
 <script>
