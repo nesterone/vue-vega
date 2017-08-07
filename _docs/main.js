@@ -6,7 +6,6 @@ import VueVega from 'vue-vega'
 import './docs.scss'
 
 Vue.config.productionTip = false
-console.log(VueVega)
 Vue.use(VueVega)
 
 function calculateNavPositions () {
