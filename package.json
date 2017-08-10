@@ -3,7 +3,6 @@
   "version": "1.0.0-beta.2",
   "description": "Vega Visualization Gramma extention for Vue",
   "author": "nesterone <igornester@gmail.com>",
-  "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",
     "start": "node build/dev-server.js",
