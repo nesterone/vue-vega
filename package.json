@@ -3,6 +3,15 @@
   "version": "1.0.0-beta.2",
   "description": "Vega Visualization Gramma extention for Vue",
   "author": "nesterone <igornester@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/nesterone/vue-vega/issues"
+  },
+  "homepage": "https://nesterone.github.io/vue-vega/index.html",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nesterone/vue-vega.git"
+  },
+  "license": "MIT",
   "scripts": {
     "dev": "node build/dev-server.js",
     "start": "node build/dev-server.js",
