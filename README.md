@@ -1,6 +1,11 @@
 # vue-vega
 
-Visualization Grammar for Vue.js 
+Vega Visualization Grammar for Vue.js
+
+## NOT FOR PRODUCTION USE YET
+
+It's still in development, API isn't stable, only after removing `beta` prefix from version that project would have stable API
+and set of features
 
 ## Features & characteristics:
 
