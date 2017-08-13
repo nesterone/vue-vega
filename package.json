@@ -1,7 +1,7 @@
 {
   "name": "vue-vega",
   "version": "1.0.0-beta.2",
-  "description": "Vega Visualization Gramma extention for Vue",
+  "description": "Provides an access to Vega Lite and Vega functionality for Vue.js ecosystem",
   "author": "nesterone <igornester@gmail.com>",
   "private": true,
   "scripts": {
@@ -16,6 +16,7 @@
     "lint": "eslint --ext .js,.vue src test/unit/specs"
   },
   "dependencies": {
+    "lodash-es": "^4.17.4",
     "vega": "^3.0.0-rc1",
     "vega-lite": "^2.0.0-beta.6",
     "vue": "^2.3.3"

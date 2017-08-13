@@ -1,70 +1,38 @@
 export default function createVegaLiteMixin (options) {
-  const vueVegaOptionHelper = options.vueVegaOptionHelper
   const changeset = options.changeset
 
   return {
-    beforeCreate () {
-      if (vueVegaOptionHelper.shouldCreateVegaSpec(this.$options)) {
-        this.$spec = vueVegaOptionHelper.getVegaSpec(this.$options)
-      }
-    },
-
     created () {
-      if (!this.$spec) {
-        return
-      }
-
-      this._createVegaView()
+      this.$vg = this.createVegaView(this.vegaSpec)
     },
 
     mounted () {
-      if (!this.$vg) {
-        return
-      }
-
-      this.$vg
-        .initialize(this.$el)
-        .run();
-
-      this._vegaViewMounted = true
+      this.mountVegaView(this.$vg, this.$el)
     },
 
     beforeDestroy () {
-      if (!this.$vg) {
-        return
-      }
-
-      this.$vg.finalize();
+      this.destroyVegaView(this.$vg)
     },
 
     methods: {
-      _createVegaView () {
-        const compile = options.compile
+      createVegaView (vegaSpec) {
         const parse = options.parse
-        const View = options.View
         const logLevel = options.logLevel
+        const View = options.View
+        const runtime = parse(vegaSpec)
 
-        if (this.description) {
-          this.$spec.description = this.description;
-        }
-        this.$compiledSpec = compile(this.$spec).spec;
-
-        const runtime = parse(this.$compiledSpec);
-
-        if (this.$vg) {
-          this.$vg.finalize()
-        }
-
-        this.$vg = new View(runtime)
+        return new View(runtime)
           .logLevel(logLevel)
           .renderer('svg')
-          .hover();
+          .hover()
+      },
 
-        if (this._vegaViewMounted) {
-          this.$vg
-            .initialize(this.$el)
-            .run();
-        }
+      mountVegaView (vegaView, $el) {
+        vegaView.initialize($el).run()
+      },
+
+      destroyVegaView (vegaView) {
+        vegaView.finalize()
       }
     },
 
@@ -79,12 +47,22 @@ export default function createVegaLiteMixin (options) {
         }
       },
 
-      mark (nextMark, prevMark) {
-        console.log('mark', arguments);
+      vegaSpec: {
+        handler (nextSpec) {
+          let isVegaViewAlreadyCreated = this.$vg
+          let didVueComponentMounted = this.$el
 
-        this.$spec.mark = nextMark
+          if (isVegaViewAlreadyCreated) {
+            this.destroyVegaView(this.$vg)
+          }
 
-        this._createVegaView()
+          this.$vg = this.createVegaView(nextSpec)
+
+          if (didVueComponentMounted) {
+            this.mountVegaView(this.$vg, this.$el)
+          }
+        },
+        deep: true
       }
     }
   }

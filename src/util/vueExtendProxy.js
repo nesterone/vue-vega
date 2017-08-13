@@ -1,10 +1,11 @@
-const DEFAULT_TEMPLATE = '<div></div>'
-
 export default function vueExtendProxy ({extendFn, vueVegaOptionHelper}) {
-  return function proxiedExtend (options) {
-    if (vueVegaOptionHelper.isTemplateRequired(options)) {
-      options.template = DEFAULT_TEMPLATE
+  return function proxiedExtend (...vueExtendArguments) {
+    let vueComponentOptions = vueExtendArguments.shift()
+
+    if (vueVegaOptionHelper.containsVegaLiteCustomOptions(vueComponentOptions)) {
+      vueComponentOptions = vueVegaOptionHelper.moveCustomOptionsToPropsDefault(vueComponentOptions)
     }
-    return extendFn.apply(this, arguments)
+
+    return extendFn.apply(this, [vueComponentOptions].concat(vueExtendArguments))
   }
 }

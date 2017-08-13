@@ -13,12 +13,13 @@ describe('vueExtendProxy', () => {
     }
 
     vueVegaOptionHelper = {
-      isTemplateRequired: sandbox.stub()
+      containsVegaLiteCustomOptions: sandbox.stub(),
+      moveCustomOptionsToPropsDefault: sandbox.stub()
     }
 
     options = {
       mark: 'test',
-      data: [1, 2, 3]
+      data: () => [1, 2, 3]
     }
 
     proxiedExtend = vueExtendProxy({
@@ -31,31 +32,23 @@ describe('vueExtendProxy', () => {
     sandbox.restore()
   })
 
-  it('should check for template', () => {
+  it('should check for vega lite compatible', () => {
     options = Object.assign({}, options)
 
     proxiedExtend(options)
 
-    expect(vueVegaOptionHelper.isTemplateRequired).to.have.been.calledWith(options)
+    expect(vueVegaOptionHelper.containsVegaLiteCustomOptions).to.have.been.calledWith(options)
   })
 
-  it('should add template to options if template required', () => {
-    vueVegaOptionHelper.isTemplateRequired.returns(true)
+  it('should move custom options to props default if vega compatible options', () => {
+    vueVegaOptionHelper.containsVegaLiteCustomOptions.returns(true)
 
     proxiedExtend(options)
 
-    expect(options.template).to.equal('<div></div>')
+    expect(vueVegaOptionHelper.moveCustomOptionsToPropsDefault).to.have.been.calledWith(options)
   })
 
-  it('should`t add template to options if template isn`t required', () => {
-    vueVegaOptionHelper.isTemplateRequired.returns(false)
-
-    proxiedExtend(options)
-
-    expect(options.template).to.be.undefined
-  })
-
-  it('should call original extend', () => {
+  xit('should call original extend', () => {
     proxiedExtend(options)
 
     expect(Vue.extend).to.have.been.calledWith(options)

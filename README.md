@@ -1,6 +1,6 @@
 # vue-vega
 
-Visualization Grammar for Vue.js 
+Provides an access to Vega Lite and Vega functionality for Vue.js ecosystem
 
 ## Features & characteristics:
 

@@ -2,7 +2,7 @@
   div
     multiselect(
       v-model="selectedMark",
-      :options="marks",
+      :options="availableMarks",
       :searchable="false",
       :close-on-select="true",
       :show-labels="false",
@@ -11,7 +11,7 @@
     vega-lite(
       :data="values",
       :mark="selectedMark",
-      :encoding="{ x: {field: 'a', type: 'ordinal'}, y: {field: 'b', type: 'quantitative'} }"
+      :encoding="encoding"
     )
 
 </template>
@@ -30,8 +30,12 @@
           {a: 'D', b: 91}, {a: 'E', b: 81}, {a: 'F', b: 53},
           {a: 'G', b: 19}, {a: 'H', b: 87}, {a: 'I', b: 52}
         ],
+        encoding: {
+          x: {field: 'a', type: 'ordinal'},
+          y: {field: 'b', type: 'quantitative'}
+        },
         selectedMark: 'bar',
-        marks: ['bar', 'point', 'circle', 'line']
+        availableMarks: ['bar', 'point', 'circle', 'line']
       }
     }
   }

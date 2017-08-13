@@ -3,6 +3,7 @@ import VueVegaOptionHelper from 'src/util/VueVegaOptionHelper'
 describe('VueVegaOptionHelper', () => {
   let options
   let vueVegaOptionHelper
+  let vegaLiteComponentOptions
   const sandbox = sinon.sandbox.create()
 
   beforeEach(() => {
@@ -11,119 +12,75 @@ describe('VueVegaOptionHelper', () => {
         return {values: [1, 2, 3]}
       }
     }
-    vueVegaOptionHelper = new VueVegaOptionHelper()
+    vegaLiteComponentOptions = {}
+
+    vueVegaOptionHelper = new VueVegaOptionHelper({vegaLiteComponentOptions})
   })
 
   afterEach(() => {
     sandbox.restore()
   })
 
-  describe('getting spec from vue options', () => {
-    beforeEach(() => {
-      sandbox.stub(vueVegaOptionHelper, 'isVegaLiteComponent')
-    })
-
-    it('should check on vue component', () => {
-      vueVegaOptionHelper.getVegaSpec(options)
-
-      expect(vueVegaOptionHelper.isVegaLiteComponent).to.have.been.calledWith(options)
-    })
-
-    it('should create vega spec from custom options', () => {
-      options = Object.assign({encoding: {}, mark: 'blabla'}, options)
-      vueVegaOptionHelper.isVegaLiteComponent.returns(false)
-
-      const spec = vueVegaOptionHelper.getVegaSpec(options)
-
-      expect(spec).to.deep.equal({
-        '$schema': 'https://vega.github.io/schema/vega-lite/v2.json',
-        data: {
-          values: [1, 2, 3]
-        },
-        mark: 'blabla',
-        encoding: {}
-      })
-    })
-
-    it('should get spec from properties when data is array without values', () => {
-      const propsData = {encoding: {}, mark: 'blabla', data: [1, 2, 3]}
-      options = Object.assign({propsData}, options)
-      vueVegaOptionHelper.isVegaLiteComponent.returns(true)
-
-      const spec = vueVegaOptionHelper.getVegaSpec(options)
-
-      expect(spec).to.deep.equal({
-        '$schema': 'https://vega.github.io/schema/vega-lite/v2.json',
-        data: {
-          values: [1, 2, 3]
-        },
-        mark: 'blabla',
-        encoding: {}
-      })
-    })
-
-    it('should get spec from properties when data is object without values', () => {
-      const propsData = {encoding: {}, mark: 'blabla', data: {test: 'test'}}
-      options = Object.assign({propsData}, options)
-      vueVegaOptionHelper.isVegaLiteComponent.returns(true)
-
-      const spec = vueVegaOptionHelper.getVegaSpec(options)
-
-      expect(spec).to.deep.equal({
-        '$schema': 'https://vega.github.io/schema/vega-lite/v2.json',
-        data: {
-          test: 'test'
-        },
-        mark: 'blabla',
-        encoding: {}
-      })
-    })
-  })
-
-  describe('isVegaLiteCompatible', () => {
+  describe('detection of custom vega lite options', () => {
     it('should be false if options don\'t contain `mark` field', () => {
       options = Object.assign({encoding: {}}, options)
-      expect(vueVegaOptionHelper.isVegaLiteCompatible(options)).to.be.false
+      expect(vueVegaOptionHelper.containsVegaLiteCustomOptions(options)).to.be.false
     })
 
     it('should be false if options don\'t contain `encoding` field', () => {
       options = Object.assign({mark: 'blabla'}, options)
-      expect(vueVegaOptionHelper.isVegaLiteCompatible(options)).to.be.false
+      expect(vueVegaOptionHelper.containsVegaLiteCustomOptions(options)).to.be.false
     })
 
     it('should be false if options don\'t contain `data` field', () => {
       delete options.data
       options = Object.assign({mark: 'blabla', encoding: {}}, options)
 
-      expect(vueVegaOptionHelper.isVegaLiteCompatible(options)).to.be.false
+      expect(vueVegaOptionHelper.containsVegaLiteCustomOptions(options)).to.be.false
     })
   })
 
-  describe('isTemplateRequired', () => {
+  describe('moving custom vega lite options to component props default', () => {
     beforeEach(() => {
-      options = Object.assign({mark: 'blabla', encoding: {}}, options)
+      options = {
+        description: 'blabla',
+        mark: 'bar',
+        encoding: {
+          x: {type: 'Q'},
+          y: {type: 'N'}
+        },
+        data () {
+          return {values: [1, 2, 3]}
+        }
+      }
+
+      vegaLiteComponentOptions = {
+        template: '<div></div>',
+        props: {
+          mark: {},
+          description: {},
+          encoding: {},
+          data: {}
+        }
+      }
+
+      vueVegaOptionHelper = new VueVegaOptionHelper({vegaLiteComponentOptions})
     })
 
-    it('should be true if template or el doesn`t present in options', () => {
-      expect(vueVegaOptionHelper.isTemplateRequired(options)).to.be.true
+    it('should move custom option to props default', () => {
+      const result = vueVegaOptionHelper.moveCustomOptionsToPropsDefault(options)
+
+      expect(result.props.mark.default).to.equal(options.mark)
+      expect(result.props.description.default).to.equal(options.description)
+      expect(result.props.encoding.default()).to.deep.equal(options.encoding)
+      expect(result.props.data.default()).to.deep.equal(options.data())
+      expect(result.data()).to.deep.equal(options.data())
     })
 
-    it('should be false if template present in options', () => {
-      options.template = 'template'
+    it('should add template to options if template required', () => {
+      let optionsResult = vueVegaOptionHelper.moveCustomOptionsToPropsDefault(options)
 
-      expect(vueVegaOptionHelper.isTemplateRequired(options)).to.be.false
-    })
-
-    it('should be false if el present in options', () => {
-      options.el = 'el'
-
-      expect(vueVegaOptionHelper.isTemplateRequired(options)).to.be.false
-    })
-
-    it('should be false if it`s not a vega lite', () => {
-      options = {template: 'template'}
-
-      expect(vueVegaOptionHelper.isTemplateRequired(options)).to.be.false
+      expect(optionsResult.template).to.equal(vegaLiteComponentOptions.template)
     })
   })
 })
