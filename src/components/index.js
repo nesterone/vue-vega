@@ -1,17 +1,22 @@
 import vegaLiteProps from './vegaLiteProps'
 import vegaLiteComputed from './vegaLiteComputed'
-
-const DEFAULT_TEMPLATE = '<div></div>'
-const DEFAULT_VEGA_LITE_COMPONENT_NAME = 'vega-lite'
+import vegaLiteCompilerDelegate from './vegaLiteCompilerDelegate'
+import {
+  COMPONENT_TEMPLATE,
+  VEGA_LITE_COMPONENT_NAME
+} from './vegaLiteConstants'
 
 const VegaLiteComponent = {
-  name: DEFAULT_VEGA_LITE_COMPONENT_NAME,
-  template: DEFAULT_TEMPLATE,
+  name: VEGA_LITE_COMPONENT_NAME,
+  template: COMPONENT_TEMPLATE,
   props: {
     ...vegaLiteProps
   },
   computed: {
     ...vegaLiteComputed
+  },
+  methods: {
+    ...vegaLiteCompilerDelegate
   }
 }
 

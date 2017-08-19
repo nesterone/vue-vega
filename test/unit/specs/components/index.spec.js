@@ -1,6 +1,7 @@
 import {VegaLiteComponent} from 'src/components/index'
 import vegaLiteProps from 'src/components/vegaLiteProps'
 import vegaLiteComputed from 'src/components/vegaLiteComputed'
+import vegaLiteCompilerDelegate from 'src/components/vegaLiteCompilerDelegate'
 
 describe('Components', () => {
   describe('VegaLiteComponent', () => {
@@ -18,6 +19,11 @@ describe('Components', () => {
 
     it('should have default computed', () => {
       expect(VegaLiteComponent.computed).to.deep.equal(vegaLiteComputed)
+    })
+
+    it('should have default compiler delegate', () => {
+      const compileDelegateKeys = Object.keys(vegaLiteCompilerDelegate)
+      expect(VegaLiteComponent.methods).to.have.all.keys(compileDelegateKeys)
     })
   })
 })
