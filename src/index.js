@@ -3,10 +3,10 @@ import { compile } from 'vega-lite'
 import createVegaLiteMixin from 'src/mixin/createVegaLiteMixin'
 import vueExtendProxy from 'src/util/vueExtendProxy'
 import VueVegaOptionHelper from 'src/util/VueVegaOptionHelper'
-import createVegaLiteComponent from 'src/components/createVegaLiteComponent'
 import VegaLitePlugin from 'src/plugin/VegaLitePlugin'
+import {VegaLiteComponent} from 'src/components/index'
 
-let vegaLiteComponentOptions = createVegaLiteComponent({ compile })
+let vegaLiteComponentOptions = VegaLiteComponent
 let mixin = createVegaLiteMixin({
   changeset: changeset,
   compile: compile,
@@ -14,7 +14,10 @@ let mixin = createVegaLiteMixin({
   View: View,
   logLevel: Warn
 })
-vegaLiteComponentOptions = Object.assign(mixin, vegaLiteComponentOptions)
+
+vegaLiteComponentOptions = Object.assign({}, vegaLiteComponentOptions, mixin)
+
+vegaLiteComponentOptions.methods.compileVegaLite = VegaLiteComponent.methods.compileVegaLite
 
 const vueVegaOptionHelper = new VueVegaOptionHelper({
   vegaLiteComponentOptions: vegaLiteComponentOptions
