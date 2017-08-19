@@ -1,9 +1,9 @@
 import {partial} from 'lodash-es'
 import {parse, View, Warn} from 'vega'
-import createVegaView from './createVegaView'
+import createView from './createView'
 
 export default {
-  createVegaView: partial(createVegaView, {
+  createVegaView: partial(createView, {
     View,
     parse,
     logLevel: Warn

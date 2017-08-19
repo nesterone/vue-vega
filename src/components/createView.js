@@ -1,11 +1,12 @@
-export default function createVegaView (options, vegaSpec) {
+export default function createView (options, vegaSpec) {
   const parse = options.parse
   const logLevel = options.logLevel
+  const renderType = options.renderType
   const View = options.View
   const runtime = parse(vegaSpec)
 
   return new View(runtime)
     .logLevel(logLevel)
-    .renderer('svg')
+    .renderer(renderType)
     .hover()
 }
