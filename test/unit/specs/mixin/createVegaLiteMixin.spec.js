@@ -88,7 +88,7 @@ xdescribe('createVegaLiteMixin', () => {
     })
   })
 
-  // TODO: fix in 'Bind data updates in component with vega instance updates #7'
+  // TODO: fix in 'Bind data updates in components with vega instance updates #7'
   xdescribe('created', () => {
     let View
     let view
@@ -162,7 +162,7 @@ xdescribe('createVegaLiteMixin', () => {
       expect(parse).to.have.been.calledWith(compilerOutput.spec)
     })
 
-    it('should add compiled spec to component', () => {
+    it('should add compiled spec to components', () => {
       vegaLiteMixin.created.call(context)
 
       expect(context.$compiledSpec).to.equal(compilerOutput.spec)
@@ -198,7 +198,7 @@ xdescribe('createVegaLiteMixin', () => {
   })
 
   xdescribe('mounted', () => {
-    xit('should initialize view within dom elem of component and run', () => {
+    xit('should initialize view within dom elem of components and run', () => {
       let view = {
         initialize: sandbox.stub(),
         run: sandbox.stub()
@@ -276,7 +276,7 @@ xdescribe('createVegaLiteMixin', () => {
         vegaLiteMixin = createVegaLiteMixin({changeset})
       })
 
-      it('should change view if it was attached to component', () => {
+      it('should change view if it was attached to components', () => {
         vegaLiteMixin.watch.data.call(context)
 
         expect(vegaView.change).to.have.been.called

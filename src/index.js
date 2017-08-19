@@ -3,7 +3,7 @@ import { compile } from 'vega-lite'
 import createVegaLiteMixin from 'src/mixin/createVegaLiteMixin'
 import vueExtendProxy from 'src/util/vueExtendProxy'
 import VueVegaOptionHelper from 'src/util/VueVegaOptionHelper'
-import createVegaLiteComponent from 'src/component/createVegaLiteComponent'
+import createVegaLiteComponent from 'src/components/createVegaLiteComponent'
 import VegaLitePlugin from 'src/plugin/VegaLitePlugin'
 
 let vegaLiteComponentOptions = createVegaLiteComponent({ compile })

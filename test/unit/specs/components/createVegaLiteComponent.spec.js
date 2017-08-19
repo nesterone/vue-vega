@@ -1,4 +1,4 @@
-import createVegaLiteComponent from 'src/component/createVegaLiteComponent'
+import createVegaLiteComponent from 'src/components/createVegaLiteComponent'
 
 describe('createVegaLiteComponent', () => {
   let context

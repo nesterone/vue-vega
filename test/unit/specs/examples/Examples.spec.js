@@ -13,14 +13,14 @@ describe('Examples', () => {
     return vm.$el.querySelector('.mark-text.role-axis-title text').textContent
   }
 
-  xit('runs sanity check for `component as spec`', () => {
+  xit('runs sanity check for `components as spec`', () => {
     const Constructor = LocalVue.extend(ComponentAsVegaLiteSpecExample)
     const vm = new Constructor().$mount()
 
     expect(getAxisText(vm)).to.equal('a')
   })
 
-  it('runs sanity check for `vega component`', () => {
+  it('runs sanity check for `vega components`', () => {
     const Constructor = LocalVue.extend(VegaLiteComponentExample)
     const vm = new Constructor().$mount()
 

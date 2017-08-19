@@ -40,7 +40,7 @@ describe('VueVegaOptionHelper', () => {
     })
   })
 
-  describe('moving custom vega lite options to component props default', () => {
+  describe('moving custom vega lite options to components props default', () => {
     beforeEach(() => {
       options = {
         description: 'blabla',
