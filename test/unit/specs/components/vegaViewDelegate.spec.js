@@ -1,10 +1,12 @@
 import vegaViewDelegate from 'src/components/vegaViewDelegate'
+import vegaSpecToRender from '../../mock/vegaSpecToRender'
 
 describe('vegaViewDelegate', () => {
   const sandbox = sinon.sandbox.create()
   let vegaView
   let element
   let {
+    createVegaView,
     mountVegaView,
     destroyVegaView
   } = vegaViewDelegate
@@ -37,5 +39,12 @@ describe('vegaViewDelegate', () => {
     destroyVegaView(vegaView)
 
     expect(vegaView.finalize).to.have.been.called
+  })
+
+  xit('should be initialized', () => {
+    // TODO: in #22, we want to change that partial got proper function
+    vegaView = createVegaView(vegaSpecToRender)
+
+    expect(vegaView).to.be.ok
   })
 })
