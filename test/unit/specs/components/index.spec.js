@@ -2,6 +2,7 @@ import {VegaLiteComponent} from 'src/components/index'
 import vegaLiteProps from 'src/components/vegaLiteProps'
 import vegaLiteComputed from 'src/components/vegaLiteComputed'
 import vegaLiteCompilerDelegate from 'src/components/vegaLiteCompilerDelegate'
+import vegaViewDelegate from 'src/components/vegaViewDelegate'
 
 describe('Components', () => {
   describe('VegaLiteComponent', () => {
@@ -22,8 +23,11 @@ describe('Components', () => {
     })
 
     it('should have default compiler delegate', () => {
-      const compileDelegateKeys = Object.keys(vegaLiteCompilerDelegate)
-      expect(VegaLiteComponent.methods).to.have.all.keys(compileDelegateKeys)
+      const delegateKeys = Object.keys({
+        ...vegaLiteCompilerDelegate,
+        ...vegaViewDelegate
+      })
+      expect(VegaLiteComponent.methods).to.have.all.keys(delegateKeys)
     })
   })
 })

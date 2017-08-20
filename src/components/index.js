@@ -1,6 +1,7 @@
 import vegaLiteProps from './vegaLiteProps'
 import vegaLiteComputed from './vegaLiteComputed'
 import vegaLiteCompilerDelegate from './vegaLiteCompilerDelegate'
+import vegaViewDelegate from './vegaViewDelegate'
 import {
   COMPONENT_TEMPLATE,
   VEGA_LITE_COMPONENT_NAME
@@ -16,7 +17,8 @@ const VegaLiteComponent = {
     ...vegaLiteComputed
   },
   methods: {
-    ...vegaLiteCompilerDelegate
+    ...vegaLiteCompilerDelegate,
+    ...vegaViewDelegate
   }
 }
 

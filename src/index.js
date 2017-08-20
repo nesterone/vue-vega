@@ -17,8 +17,6 @@ let mixin = createVegaLiteMixin({
 
 vegaLiteComponentOptions = Object.assign({}, vegaLiteComponentOptions, mixin)
 
-vegaLiteComponentOptions.methods.compileVegaLite = VegaLiteComponent.methods.compileVegaLite
-
 const vueVegaOptionHelper = new VueVegaOptionHelper({
   vegaLiteComponentOptions: vegaLiteComponentOptions
 })

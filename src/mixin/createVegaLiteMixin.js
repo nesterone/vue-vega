@@ -14,28 +14,6 @@ export default function createVegaLiteMixin (options) {
       this.destroyVegaView(this.$vg)
     },
 
-    methods: {
-      createVegaView (vegaSpec) {
-        const parse = options.parse
-        const logLevel = options.logLevel
-        const View = options.View
-        const runtime = parse(vegaSpec)
-
-        return new View(runtime)
-          .logLevel(logLevel)
-          .renderer('svg')
-          .hover()
-      },
-
-      mountVegaView (vegaView, $el) {
-        vegaView.initialize($el).run()
-      },
-
-      destroyVegaView (vegaView) {
-        vegaView.finalize()
-      }
-    },
-
     watch: {
       data (nextData, prevData) {
         const vegaView = this.$vg

@@ -4,7 +4,7 @@ import VegaLiteComponentExample from 'examples/VegaLiteComponentExample'
 import UpdateDataExample from 'examples/UpdateDataExample'
 import VueVega from 'src/index'
 
-xdescribe('Examples', () => {
+describe('Examples', () => {
   let LocalVue = Vue
   // TODO: in 'Provide scoped vue instance for testing plugin #16'
   LocalVue.use(VueVega)
