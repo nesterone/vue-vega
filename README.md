@@ -2,6 +2,11 @@
 
 Provides an access to Vega Lite and Vega functionality for Vue.js ecosystem
 
+## NOT FOR PRODUCTION USE YET
+
+It's still in development, API isn't stable, only after removing `beta` prefix from version that project would have stable API
+and set of features
+
 ## Features & characteristics:
 
 * Vega-lite support from 2.0.0
