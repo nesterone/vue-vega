@@ -2,18 +2,6 @@ export default function createVegaLiteMixin (options) {
   const changeset = options.changeset
 
   return {
-    created () {
-      this.$vg = this.createVegaView(this.vegaSpec)
-    },
-
-    mounted () {
-      this.mountVegaView(this.$vg, this.$el)
-    },
-
-    beforeDestroy () {
-      this.destroyVegaView(this.$vg)
-    },
-
     watch: {
       data (nextData, prevData) {
         const vegaView = this.$vg

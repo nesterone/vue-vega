@@ -2,6 +2,7 @@ import vegaLiteProps from './vegaLiteProps'
 import vegaLiteComputed from './vegaLiteComputed'
 import vegaLiteCompilerDelegate from './vegaLiteCompilerDelegate'
 import vegaViewDelegate from './vegaViewDelegate'
+import lifecycleHooks from './lifecycleHooks'
 import {
   COMPONENT_TEMPLATE,
   VEGA_LITE_COMPONENT_NAME
@@ -10,6 +11,7 @@ import {
 const VegaLiteComponent = {
   name: VEGA_LITE_COMPONENT_NAME,
   template: COMPONENT_TEMPLATE,
+  ...lifecycleHooks,
   props: {
     ...vegaLiteProps
   },
