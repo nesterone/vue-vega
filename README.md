@@ -1,18 +1,16 @@
 # vue-vega
 
-Provides an access to Vega Lite and Vega functionality for Vue.js ecosystem
+Vega Lite and Vega integration in Vue.js ecosystem
 
-## NOT FOR PRODUCTION USE YET
+## UNDER CONSTRUCTION
 
-It's still in development, API isn't stable, only after removing `beta` prefix from version that project would have stable API
-and set of features
+It's still in development, API isn't stable, only after removing `alpha` prefix from the version that project would have stable API
 
 ## Features & characteristics:
 
-* Vega-lite support from 2.0.0
-* Dependencies on vega and vega-lite
-* Vue components as vega specs
-* `vega-lite` component to use in template
+* Vega-lite support from 2.0.0 (not all props yet)
+* `vega-lite` component
+*  ~~map vega lite specs to vue components~~
 * +99% test coverage
 
 ## Install & basic usage
@@ -24,33 +22,22 @@ and set of features
 ```vue
 <template>
   <vega-lite
-    :data="values"
-    :mark="bar"
-    :encoding="{
-        x: {field: 'a', type: 'ordinal'},
-        y: {field: 'b', type: 'quantitative'}
-    }"
-  />
+     :data="[
+         {a: 'A', b: 28}, {a: 'B', b: 55}, {a: 'C', b: 43},
+         {a: 'D', b: 91}, {a: 'E', b: 81}, {a: 'F', b: 53},
+         {a: 'G', b: 19}, {a: 'H', b: 87}, {a: 'I', b: 52}
+     ]"
+     mark="bar"
+     :encoding="{
+       x: {field: 'a', type: 'ordinal'},
+       y: {field: 'b', type: 'quantitative'}
+     }">
+   </vega-lite>
 </template>
-
-<script>
-  export default{
-    data () {
-      return {
-        values: [
-          {a: 'A', b: 28}, {a: 'B', b: 55}, {a: 'C', b: 43},
-          {a: 'D', b: 91}, {a: 'E', b: 81}, {a: 'F', b: 53},
-          {a: 'G', b: 19}, {a: 'H', b: 87}, {a: 'I', b: 52}
-        ]
-      }
-    }
-  }
-</script>
-
 ```
 ## JSFiddle
 
-Example JSFiddle
+* [Basic Usage](https://jsfiddle.net/NesterOne/syvk7e04)
 
 
 ## Contributing

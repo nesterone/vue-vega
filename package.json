@@ -1,12 +1,14 @@
 {
   "name": "vue-vega",
-  "version": "1.0.0-alpha.1",
-  "description": "Provides an access to Vega Lite and Vega functionality through Vue.js ecosystem",
-  "author": "nesterone <igornester@gmail.com>",
+  "version": "1.0.0-alpha.2",
+  "description": "Vega Lite and Vega integration in Vue.js ecosystem",
+  "main": "dist/vue-vega.min.js",
+  "unpkg": "dist/vue-vega.min.js",
   "bugs": {
     "url": "https://github.com/nesterone/vue-vega/issues"
   },
   "homepage": "https://nesterone.github.io/vue-vega",
+  "author": "nesterone <igornester@gmail.com>",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nesterone/vue-vega.git"
