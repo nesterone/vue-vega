@@ -8,7 +8,8 @@ describe('vegaViewDelegate', () => {
   let {
     createVegaView,
     mountVegaView,
-    destroyVegaView
+    destroyVegaView,
+    streamDataToVegaView
   } = vegaDelegate
 
   beforeEach(() => {
@@ -46,5 +47,51 @@ describe('vegaViewDelegate', () => {
     vegaView = createVegaView(vegaSpecToRender)
 
     expect(vegaView).to.be.ok
+  })
+
+  describe('stream data to vega view', () => {
+    let changeset
+    let dataSetName
+    let vegaSpec
+    let nextData
+    let prevData
+
+    beforeEach(() => {
+      vegaView = {
+        change: sandbox.stub(),
+        run: sandbox.stub()
+      }
+      vegaView.change.returns(vegaView)
+
+      dataSetName = 'testDataSet'
+
+      vegaSpec = {
+        data: [{name: dataSetName}]
+      }
+
+      nextData = [1, 2, 3]
+      prevData = [-3, -2, -1]
+
+      changeset = sandbox.stub()
+      changeset.remove = sandbox.stub().returns(changeset)
+      changeset.insert = sandbox.stub().returns(changeset)
+      changeset.returns(changeset)
+    })
+
+    it('should remove previous and insert next data to changeset', () => {
+      streamDataToVegaView(vegaView, nextData, prevData, vegaSpec, changeset)
+
+      expect(changeset.remove).to.have.been.calledWith(prevData)
+      expect(changeset.remove).to.have.been.calledBefore(changeset.insert)
+      expect(changeset.insert).to.have.been.calledWith(nextData)
+    })
+
+    it('should change view`s dataset and trigger re-render', () => {
+      streamDataToVegaView(vegaView, nextData, prevData, vegaSpec, changeset)
+
+      expect(vegaView.change).to.have.been.calledWith(dataSetName, changeset)
+      expect(vegaView.change).to.have.been.calledBefore(vegaView.run)
+      expect(vegaView.run).to.have.been.called
+    })
   })
 })

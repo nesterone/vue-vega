@@ -5,18 +5,18 @@ describe('Vega Spec Watch', () => {
   const vegaSpec = 'vegaSpec'
   const vegaView = 'vegaView'
   const elem = 'elem'
-  let vegaViewDelegate
+  let vegaDelegate
   let context
 
   beforeEach(() => {
-    vegaViewDelegate = {
+    vegaDelegate = {
       createVegaView: sandbox.stub(),
       mountVegaView: sandbox.stub(),
       destroyVegaView: sandbox.stub()
     }
 
     context = {
-      ...vegaViewDelegate
+      ...vegaDelegate
     }
   })
 
@@ -33,30 +33,30 @@ describe('Vega Spec Watch', () => {
 
     vegaSpecWatch.handler.call(context)
 
-    expect(vegaViewDelegate.destroyVegaView).to.have.been.calledWith(vegaView)
+    expect(vegaDelegate.destroyVegaView).to.have.been.calledWith(vegaView)
   })
 
   it('should`t  call destroy if vega view wasn`t created yet', () => {
     vegaSpecWatch.handler.call(context)
 
-    expect(vegaViewDelegate.destroyVegaView).not.to.have.been.called
+    expect(vegaDelegate.destroyVegaView).not.to.have.been.called
   })
 
   it('should create vega view within new spec', () => {
     vegaSpecWatch.handler.call(context, vegaSpec)
 
-    expect(vegaViewDelegate.createVegaView).to.have.been.calledWith(vegaSpec)
+    expect(vegaDelegate.createVegaView).to.have.been.calledWith(vegaSpec)
   })
 
   it('should mount vega view if component was mounted', () => {
     context.$el = elem
-    vegaViewDelegate
+    vegaDelegate
       .createVegaView
       .withArgs(vegaSpec)
       .returns(vegaView)
 
     vegaSpecWatch.handler.call(context, vegaSpec)
 
-    expect(vegaViewDelegate.mountVegaView).to.have.been.calledWith(vegaView, elem)
+    expect(vegaDelegate.mountVegaView).to.have.been.calledWith(vegaView, elem)
   })
 })
