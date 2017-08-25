@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Spec inside instance</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.2.2/vue.min.js"></script>
-  <script src="../../dist/vue-vega.min.js"></script>
+  <script src="https://unpkg.com/vue"></script>
+  <script src="https://unpkg.com/vue-vega"></script>
 </head>
 <body>
 <div id='app'>
@@ -22,8 +22,8 @@
   </vega-lite>
 </div>
 <script>
-  /* global Vue */
-  Vue.use(window.VueVega.default)
+  /* global Vue VueVega */
+  Vue.use(VueVega.default)
 
   new Vue({ // eslint-disable-line no-new
     el: '#app'

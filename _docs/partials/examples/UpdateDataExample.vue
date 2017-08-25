@@ -5,7 +5,7 @@
       :data="values",
       :encoding="encoding"
     )
-    button(@click="refreshNumbers") Refresh
+    button.button.button--medium(@click="refreshNumbers") Refresh
 </template>
 
 <script>
