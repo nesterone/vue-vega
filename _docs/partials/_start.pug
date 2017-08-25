@@ -5,7 +5,8 @@ section.start(:style="gradient")
       | Vue-Vega
       small.version
         =`(${require('../../package.json').version})`
-    h3.typo__h3 Provides an access to Vega Lite and Vega functionality for Vue.js ecosystem
+    h3.typo__h3
+        =`${require('../../package.json').description}`
     .badges
       // TODO: in 'Embed Badges to docs #14'
     .grid__row.grid__row--centered
@@ -31,4 +32,5 @@ section.start(:style="gradient")
     .grid__row.grid__row--centered
       .grid__column.utils--center
         a.button.button--large.button--secondary.button--github(href="https://github.com/nesterone/vue-vega" target="_BLANK") View on GitHub
+        a.button.button--large.button--info(href="https://jsfiddle.net/NesterOne/syvk7e04") JSFiddle
         a.button.button--large(href="#sub-getting-started") Getting started & examples
