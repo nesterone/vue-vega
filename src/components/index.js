@@ -1,7 +1,6 @@
 import vegaLiteProps from './props/vegaLiteProps'
 import vegaLiteComputed from './props/vegaLiteComputed'
-import vegaLiteCompilerDelegate from './delegate/vegaLiteCompilerDelegate'
-import vegaViewDelegate from './delegate/vegaViewDelegate'
+import vegaLiteDelegate from './delegate/vegaLiteDelegate'
 import lifecycleHooks from './lifecycleHooks'
 import vegaSpecWatch from './watch/vegaSpecWatch'
 import dataWatch from './watch/dataWatch'
@@ -21,8 +20,7 @@ const VegaLiteComponent = {
     ...vegaLiteComputed
   },
   methods: {
-    ...vegaLiteCompilerDelegate,
-    ...vegaViewDelegate
+    ...vegaLiteDelegate
   },
   watch: {
     vegaSpec: vegaSpecWatch,

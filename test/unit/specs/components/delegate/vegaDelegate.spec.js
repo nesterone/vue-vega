@@ -1,4 +1,4 @@
-import vegaViewDelegate from 'src/components/delegate/vegaViewDelegate'
+import vegaDelegate from 'src/components/delegate/vegaDelegate'
 import vegaSpecToRender from '../../../mock/vegaSpecToRender'
 
 describe('vegaViewDelegate', () => {
@@ -9,7 +9,7 @@ describe('vegaViewDelegate', () => {
     createVegaView,
     mountVegaView,
     destroyVegaView
-  } = vegaViewDelegate
+  } = vegaDelegate
 
   beforeEach(() => {
     vegaView = {
