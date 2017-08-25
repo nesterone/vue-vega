@@ -1,5 +1,5 @@
-import vegaViewDelegate from 'src/components/vegaViewDelegate'
-import vegaSpecToRender from '../../mock/vegaSpecToRender'
+import vegaViewDelegate from 'src/components/delegate/vegaViewDelegate'
+import vegaSpecToRender from '../../../mock/vegaSpecToRender'
 
 describe('vegaViewDelegate', () => {
   const sandbox = sinon.sandbox.create()

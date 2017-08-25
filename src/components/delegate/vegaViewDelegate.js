@@ -1,7 +1,7 @@
 import {partial} from 'lodash-es'
 import {parse, View, Warn} from 'vega'
-import createView from './createView'
-import {RENDER_TYPE} from 'src/components/vegaLiteConstants'
+import createView from 'src/components/util/createView'
+import {RENDER_TYPE} from 'src/constants'
 
 export default {
   createVegaView: partial(createView, {

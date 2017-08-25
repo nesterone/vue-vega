@@ -1,8 +1,8 @@
 import {VegaLiteComponent} from 'src/components/index'
-import vegaLiteProps from 'src/components/vegaLiteProps'
-import vegaLiteComputed from 'src/components/vegaLiteComputed'
-import vegaLiteCompilerDelegate from 'src/components/vegaLiteCompilerDelegate'
-import vegaViewDelegate from 'src/components/vegaViewDelegate'
+import vegaLiteProps from 'src/components/props/vegaLiteProps'
+import vegaLiteComputed from 'src/components/props/vegaLiteComputed'
+import vegaLiteCompilerDelegate from 'src/components/delegate/vegaLiteCompilerDelegate'
+import vegaViewDelegate from 'src/components/delegate/vegaViewDelegate'
 
 describe('Components', () => {
   describe('VegaLiteComponent', () => {

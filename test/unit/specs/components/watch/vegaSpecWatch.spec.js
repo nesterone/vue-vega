@@ -1,4 +1,4 @@
-import vegaSpecWatch from 'src/components/vegaSpecWatch'
+import vegaSpecWatch from 'src/components/watch/vegaSpecWatch'
 
 describe('Vega Spec Watch', () => {
   const sandbox = sinon.sandbox.create()

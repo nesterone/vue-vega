@@ -1,6 +1,6 @@
 export default {
   handler (nextSpec) {
-    // TODO: skip if only data was changes
+    // TODO: in #24 skip if only data was changes
     let isVegaViewAlreadyCreated = this.$vg
     let didVueComponentMounted = this.$el
 

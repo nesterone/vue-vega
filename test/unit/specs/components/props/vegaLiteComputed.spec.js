@@ -1,4 +1,4 @@
-import vegaLiteComputed from 'src/components/vegaLiteComputed'
+import vegaLiteComputed from 'src/components/props/vegaLiteComputed'
 
 describe('vegaLiteComputed', () => {
   const sandbox = sinon.sandbox.create()

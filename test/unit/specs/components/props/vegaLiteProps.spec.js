@@ -1,4 +1,4 @@
-import vegaLiteProps from 'src/components/vegaLiteProps'
+import vegaLiteProps from 'src/components/props/vegaLiteProps'
 
 describe('Vega Lite Props', () => {
   it('can have description as string', () => {

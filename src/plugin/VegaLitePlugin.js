@@ -6,6 +6,7 @@ export default class VegaLitePlugin {
   }
 
   install (Vue) {
+    // TODO: in 'Provide explicit spec to component API instead of implicit proxy over extend #23'
     Vue.extend = this.vueExtendProxy({
       extendFn: Vue.extend,
       vueVegaOptionHelper: this.vueVegaOptionHelper

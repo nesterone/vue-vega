@@ -1,14 +1,14 @@
-import vegaLiteProps from './vegaLiteProps'
-import vegaLiteComputed from './vegaLiteComputed'
-import vegaLiteCompilerDelegate from './vegaLiteCompilerDelegate'
-import vegaViewDelegate from './vegaViewDelegate'
+import vegaLiteProps from './props/vegaLiteProps'
+import vegaLiteComputed from './props/vegaLiteComputed'
+import vegaLiteCompilerDelegate from './delegate/vegaLiteCompilerDelegate'
+import vegaViewDelegate from './delegate/vegaViewDelegate'
 import lifecycleHooks from './lifecycleHooks'
-import vegaSpecWatch from './vegaSpecWatch'
-import dataWatch from './dataWatch'
+import vegaSpecWatch from './watch/vegaSpecWatch'
+import dataWatch from './watch/dataWatch'
 import {
   COMPONENT_TEMPLATE,
   VEGA_LITE_COMPONENT_NAME
-} from './vegaLiteConstants'
+} from 'src/constants'
 
 const VegaLiteComponent = {
   name: VEGA_LITE_COMPONENT_NAME,

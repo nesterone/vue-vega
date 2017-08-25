@@ -1,8 +1,8 @@
-import createView from 'src/components/createView'
+import createView from 'src/components/util/createView'
 import {
   LOG_LEVEL,
   RENDER_TYPE
-} from 'src/components/vegaLiteConstants'
+} from 'src/constants'
 
 describe('createView', () => {
   const sandbox = sinon.sandbox.create()
