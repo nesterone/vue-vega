@@ -1,5 +1,6 @@
 import vegaDelegate from 'src/components/delegate/vegaDelegate'
 import vegaSpecToRender from '../../../mock/vegaSpecToRender'
+import {DEFAULT_DATA_SOURCE_NAME} from 'src/constants'
 
 describe('vegaViewDelegate', () => {
   const sandbox = sinon.sandbox.create()
@@ -59,11 +60,12 @@ describe('vegaViewDelegate', () => {
     beforeEach(() => {
       vegaView = {
         change: sandbox.stub(),
-        run: sandbox.stub()
+        run: sandbox.stub(),
+        data: sandbox.stub()
       }
       vegaView.change.returns(vegaView)
 
-      dataSetName = 'testDataSet'
+      dataSetName = DEFAULT_DATA_SOURCE_NAME
 
       vegaSpec = {
         data: [{name: dataSetName}]
@@ -76,6 +78,8 @@ describe('vegaViewDelegate', () => {
       changeset.remove = sandbox.stub().returns(changeset)
       changeset.insert = sandbox.stub().returns(changeset)
       changeset.returns(changeset)
+
+      vegaView.data.withArgs(dataSetName).returns(prevData)
     })
 
     it('should remove previous and insert next data to changeset', () => {

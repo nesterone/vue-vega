@@ -1,3 +1,4 @@
+import {changeset} from 'vega'
 import vegaSpecWatch from 'src/components/watch/vegaSpecWatch'
 
 describe('Vega Spec Watch', () => {
@@ -5,6 +6,7 @@ describe('Vega Spec Watch', () => {
   const vegaSpec = 'vegaSpec'
   const vegaView = 'vegaView'
   const elem = 'elem'
+  const data = 'data'
   let vegaDelegate
   let context
 
@@ -12,11 +14,14 @@ describe('Vega Spec Watch', () => {
     vegaDelegate = {
       createVegaView: sandbox.stub(),
       mountVegaView: sandbox.stub(),
-      destroyVegaView: sandbox.stub()
+      destroyVegaView: sandbox.stub(),
+      streamDataToVegaView: sandbox.stub()
     }
 
     context = {
-      ...vegaDelegate
+      ...vegaDelegate,
+      data: data,
+      vegaSpec: vegaSpec
     }
   })
 
@@ -58,5 +63,6 @@ describe('Vega Spec Watch', () => {
     vegaSpecWatch.handler.call(context, vegaSpec)
 
     expect(vegaDelegate.mountVegaView).to.have.been.calledWith(vegaView, elem)
+    expect(vegaDelegate.streamDataToVegaView).to.have.been.calledWith(vegaView, data, null, vegaSpec, changeset)
   })
 })

@@ -1,6 +1,7 @@
+import { changeset } from 'vega'
+
 export default {
   handler (nextSpec) {
-    // TODO: in #24 skip if only data was changes
     let isVegaViewAlreadyCreated = this.$vg
     let didVueComponentMounted = this.$el
 
@@ -12,6 +13,13 @@ export default {
 
     if (didVueComponentMounted) {
       this.mountVegaView(this.$vg, this.$el)
+      this.streamDataToVegaView(
+        this.$vg,
+        this.data,
+        null,
+        this.vegaSpec,
+        changeset
+      )
     }
   },
   deep: true

@@ -1,3 +1,4 @@
+import {changeset} from 'vega'
 import lifecycleHooks from 'src/components/lifecycleHooks'
 
 describe('Component Lifecycle hooks', () => {
@@ -5,20 +6,23 @@ describe('Component Lifecycle hooks', () => {
   const vegaSpec = 'vegaSpec'
   const vegaView = 'vegaView'
   const elem = 'elem'
-  let vegaViewDelegate
+  const data = 'data'
+  let vegaDelegate
   let context
 
   beforeEach(() => {
-    vegaViewDelegate = {
+    vegaDelegate = {
       createVegaView: sandbox.stub(),
       mountVegaView: sandbox.stub(),
-      destroyVegaView: sandbox.stub()
+      destroyVegaView: sandbox.stub(),
+      streamDataToVegaView: sandbox.stub()
     }
 
     context = {
       $el: elem,
       vegaSpec: vegaSpec,
-      ...vegaViewDelegate
+      ...vegaDelegate,
+      data: data
     }
   })
 
@@ -27,7 +31,7 @@ describe('Component Lifecycle hooks', () => {
   })
 
   it('should attach `$vg` as vega view instance', () => {
-    vegaViewDelegate.createVegaView.returns(vegaView)
+    vegaDelegate.createVegaView.returns(vegaView)
 
     lifecycleHooks.created.call(context)
 
@@ -37,15 +41,17 @@ describe('Component Lifecycle hooks', () => {
   it('should call delegate after component was created', () => {
     lifecycleHooks.created.call(context)
 
-    expect(vegaViewDelegate.createVegaView).to.have.been.calledWith(vegaSpec)
+    expect(vegaDelegate.createVegaView).to.have.been.calledWith(vegaSpec)
   })
 
-  it('should call delegate after component was mounted', () => {
+  it('should mounte vega view and stream it with data', () => {
     context.$vg = vegaView
 
     lifecycleHooks.mounted.call(context)
 
-    expect(vegaViewDelegate.mountVegaView).to.have.been.calledWith(vegaView, elem)
+    expect(vegaDelegate.mountVegaView).to.have.been.calledWith(vegaView, elem)
+    expect(vegaDelegate.streamDataToVegaView).to.have.been.calledAfter(vegaDelegate.mountVegaView)
+    expect(vegaDelegate.streamDataToVegaView).to.have.been.calledWith(vegaView, data, null, vegaSpec, changeset)
   })
 
   it('should call delegate before component would be destroyed', () => {
@@ -53,6 +59,6 @@ describe('Component Lifecycle hooks', () => {
 
     lifecycleHooks.beforeDestroy.call(context)
 
-    expect(vegaViewDelegate.destroyVegaView).to.have.been.calledWith(vegaView)
+    expect(vegaDelegate.destroyVegaView).to.have.been.calledWith(vegaView)
   })
 })

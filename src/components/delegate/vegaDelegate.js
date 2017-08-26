@@ -1,7 +1,7 @@
 import { partial } from 'lodash-es'
 import { parse, View, Warn } from 'vega'
-import createView from 'src/components/util/createView'
-import { RENDER_TYPE } from 'src/constants'
+import {createView} from 'src/components/util/vegaHelpers'
+import { RENDER_TYPE, DEFAULT_DATA_SOURCE_NAME } from 'src/constants'
 
 export default {
   createVegaView: partial(createView, {
@@ -20,8 +20,8 @@ export default {
   },
 
   streamDataToVegaView (vegaView, nextData, prevData, vegaSpec, changeset) {
-    const originalDataSetName = vegaSpec.data[0].name
-    const dataChangeset = changeset().remove(prevData).insert(nextData)
-    vegaView.change(originalDataSetName, dataChangeset).run()
+    const localPrevData = vegaView.data(DEFAULT_DATA_SOURCE_NAME)
+    const changeSet = changeset().remove(localPrevData).insert(nextData)
+    vegaView.change(DEFAULT_DATA_SOURCE_NAME, changeSet).run()
   }
 }

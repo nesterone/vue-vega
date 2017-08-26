@@ -1,3 +1,5 @@
+import {changeset} from 'vega'
+
 export default {
   created () {
     this.$vg = this.createVegaView(this.vegaSpec)
@@ -5,6 +7,13 @@ export default {
 
   mounted () {
     this.mountVegaView(this.$vg, this.$el)
+    this.streamDataToVegaView(
+      this.$vg,
+      this.data,
+      null,
+      this.vegaSpec,
+      changeset
+    )
   },
 
   beforeDestroy () {
