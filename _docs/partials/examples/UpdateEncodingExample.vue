@@ -34,15 +34,10 @@
         data: cars,
         mark: 'point',
         encoding: {
-          x: {field: 'Horsepower', type: 'quantitative'}
+          x: {field: 'Horsepower', type: 'quantitative'},
+          y: {field: 'Miles_per_Gallon', type: 'quantitative'}
         },
         options: [
-          {
-            name: 'Miles per Gallon - Y',
-            channel: {
-              y: {field: 'Miles_per_Gallon', type: 'quantitative'}
-            }
-          },
           {
             name: 'Origin - Color',
             channel: {

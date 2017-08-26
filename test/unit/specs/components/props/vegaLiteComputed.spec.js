@@ -28,7 +28,7 @@ describe('vegaLiteComputed', () => {
         x: {field: 'a', type: 'Q'}
       },
       data: {
-        values: [1, 2, 3]
+        values: []
       }
     }
 

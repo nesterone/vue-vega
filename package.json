@@ -1,6 +1,6 @@
 {
   "name": "vue-vega",
-  "version": "1.0.0-alpha.2",
+  "version": "1.0.0-alpha.3",
   "description": "Vega Lite and Vega integration in Vue.js ecosystem",
   "main": "dist/vue-vega.min.js",
   "unpkg": "dist/vue-vega.min.js",

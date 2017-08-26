@@ -1,4 +1,4 @@
-import createView from 'src/components/util/createView'
+import {createView} from 'src/components/util/vegaHelpers'
 import {
   LOG_LEVEL,
   RENDER_TYPE
