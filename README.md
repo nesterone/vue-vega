@@ -8,7 +8,7 @@
 `vue-vega` is a set of components and utilises dedicated to help developer access `vega-lite` and
  `vega` functionality through convenient API for Vue.js ecosystem
 
-> It's still in development, *API isn't stable*, only after removing `alpha` prefix from the version that project would have stable API
+> It's in development, *API isn't stable*, only after removing `alpha` prefix from the version that project would have stable API
 
 ## Documentation
 

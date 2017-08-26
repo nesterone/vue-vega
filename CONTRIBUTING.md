@@ -10,7 +10,7 @@ Please make sure you are welcoming and friendly in all of our spaces.
 
 ## State of the Art
 
-The project is in an early stage of research and development and it's not clear on how much it would valuable for the community.
+The project is in an early stage of research and development and it's not clear on how much it value it will bring for the community.
 So any feedback is a good contribution
 
 ## Ways to Contribute
@@ -31,5 +31,8 @@ link to sample with a reproducible use case, for example
   
 ### Development
 
-Pick any, however, to be familiar we recommend issues with `need help` label, before starting your work,
-notify about your intention, it would prevent us from working in parallel on the same issue 
+To became familiar with project we recommend to start with issues marked as 
+[need help](https://github.com/nesterone/vue-vega/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22)
+Before starting your work, notify about your intention, it would prevent us from working on the same issue in parallel
+
+If you have an interesting enchantment or technical idea, just create PR with changes and description 
