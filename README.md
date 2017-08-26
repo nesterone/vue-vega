@@ -39,8 +39,11 @@ It's still in development, API isn't stable, only after removing `alpha` prefix 
 
 * [Basic Usage](https://jsfiddle.net/NesterOne/syvk7e04)
 
-
 ## Contributing
+
+Check out crafted [Contributing Guide](CONTRIBUTING.md),
+
+## Build
 
 ```bash
 # serve with hot reload at localhost:8080
@@ -58,5 +61,5 @@ npm run build
 # run unit tests
 npm run test
 ```
-
 For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+ 
