@@ -5,7 +5,7 @@
 Welcome, Everyone! Your interest is already a big thing for us. As far as your
 interest would grow so strong that you want to contribute, please don't hesitate and do it.
 
-All members of our community are expected to follow our [Code of Conduct]. 
+All members of our community are expected to follow our [Code of Conduct](CODE_OF_CONDUCT.md). 
 Please make sure you are welcoming and friendly in all of our spaces.
 
 ## State of the Art
