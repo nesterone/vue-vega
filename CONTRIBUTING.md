@@ -1,4 +1,4 @@
-#Contributing to vue-vega
+# Contributing to vue-vega
 
 ## Introduction 
 
