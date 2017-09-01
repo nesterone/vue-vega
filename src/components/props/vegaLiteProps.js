@@ -9,7 +9,7 @@ export default {
     type: Object
   },
   data: [Object, Array],
-  schema: {
+  $schema: {
     type: String,
     default: 'https://vega.github.io/schema/vega-lite/v2.json'
   }

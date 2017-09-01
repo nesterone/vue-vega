@@ -17,12 +17,12 @@ describe('Vega Lite Props', () => {
     expect(vegaLiteProps.data).to.deep.equal([Object, Array])
   })
 
-  it('can have schema as string', () => {
-    expect(vegaLiteProps.schema.type).to.equal(String)
+  it('can have $schema as string', () => {
+    expect(vegaLiteProps.$schema.type).to.equal(String)
   })
 
-  it('should have default schema', () => {
+  it('should have default $schema', () => {
     const schema = 'https://vega.github.io/schema/vega-lite/v2.json'
-    expect(vegaLiteProps.schema.default).to.equal(schema)
+    expect(vegaLiteProps.$schema.default).to.equal(schema)
   })
 })
