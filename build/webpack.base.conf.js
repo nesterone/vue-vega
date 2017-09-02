@@ -22,6 +22,7 @@ module.exports = {
     extensions: ['.pug', '.js', '.vue', '.json'],
     modules: [
       resolve('src'),
+      resolve('spec'),
       resolve('_docs'),
       resolve('node_modules')
     ],
@@ -30,7 +31,8 @@ module.exports = {
       'vue-vega': path.resolve(__dirname, '../src/index'), // for consistent docs
       'src': path.resolve(__dirname, '../src'),
       'assets': path.resolve(__dirname, '../_docs/assets'),
-      'examples': path.resolve(__dirname, '../_docs/partials/examples')
+      'examples': path.resolve(__dirname, '../_docs/partials/examples'),
+      'spec': path.resolve(__dirname, '../spec')
     }
   },
   module: {

@@ -1,5 +1,5 @@
 import vegaDelegate from 'src/components/delegate/vegaDelegate'
-import vegaSpecToRender from '../../../mock/vegaSpecToRender'
+import simpleBarSpec from 'spec/vega/bar-simple.vg.json'
 import {DEFAULT_DATA_SOURCE_NAME} from 'src/constants'
 
 describe('vegaViewDelegate', () => {
@@ -43,9 +43,9 @@ describe('vegaViewDelegate', () => {
     expect(vegaView.finalize).to.have.been.called
   })
 
-  xit('should be initialized', () => {
+  it('should create vega view', () => {
     // TODO: in #22, we want to change that partial got proper function
-    vegaView = createVegaView(vegaSpecToRender)
+    vegaView = createVegaView(simpleBarSpec)
 
     expect(vegaView).to.be.ok
   })
