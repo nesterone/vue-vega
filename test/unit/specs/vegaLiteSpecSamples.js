@@ -1,5 +1,7 @@
-import VegaLiteBar from 'spec/vega-lite/bar.vl.json'
+import Bar from 'spec/vega-lite/bar.vl.json'
+import Minimal from 'spec/vega-lite/minimal.vl.json'
 
-export {
-  VegaLiteBar
+export default {
+  Bar,
+  Minimal
 }

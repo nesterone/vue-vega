@@ -3,14 +3,15 @@ import {
   mapVegaSpecToComponentOptions
 } from 'src/util/vueVegaUtils'
 
-import {
-  VegaLiteBar
-} from '../vegaLiteSpecSamples'
+import vegaLiteSpecSamples from '../vegaLiteSpecSamples'
 
 describe('vueVegaUtil', () => {
   const sandbox = sinon.sandbox.create()
 
-  function checkComponentProps (spec) {
+  function checkComponentProps (specName) {
+    console.info('Checking props for: ', specName)
+
+    const spec = vegaLiteSpecSamples[specName]
     const newVegaLiteComponent = mapVegaLiteSpecToComponentOptions(spec)
     const newVegaLiteComponentProps = newVegaLiteComponent.props
 
@@ -31,8 +32,9 @@ describe('vueVegaUtil', () => {
     expect(mapVegaSpecToComponentOptions()).to.be.null
   })
 
-  it('should convert spec to component with props defaults the same as spec props', () => {
-    checkComponentProps(VegaLiteBar)
+  it('should map spec to components with props equals to spec props', () => {
+    const sampleNames = Object.keys(vegaLiteSpecSamples)
+    sampleNames.forEach((sampleName) => checkComponentProps(sampleName))
   })
 })
 
