@@ -1,16 +1,18 @@
-h2.typo__h2#sub-plugin(data-section) Plugin
-.grid__row
++subsection('install')
+  p.typo__p
+    |  Register <em>VegaLiteComponent</em> under 'vega-lite' name, so you can use
+    | `vega-lite` tag in your Vue templates
   .table__container
     table.table.table--full-size.table--fixed
       thead
         tr.table__tr
-          th.table__th(width="100") Name
-          th.table__th(width="80") Type
-          th.table__th(width="180") Default
-          th.table__th(width="200") Description
+        th.table__th(width="160") Name
+        th.table__th(width="160") Arguments
+        th.table__th Description
       tbody
         tr.table__tr
-          td.table__td: strong vegaOptions
-          td.table__td VegaOptions
-          td.table__td 'Some defaults here'
-          td.table__td Options to override vega defaults options
+          td.table__td: kbd install
+          td.table__td
+            | Vue
+          td.table__td
+            | Register <em>VegaLiteComponent</em> under 'vega-lite' name

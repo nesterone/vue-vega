@@ -1,0 +1,58 @@
++subsection('VegaLiteComponent')
+  p.typo__p
+    | <kbd>VegaLiteComponent</kbd> - vue component wrapper around <em>vega-lite</em>.
+    | For more details refer to
+    a(href='https://vega.github.io/vega-lite/docs/spec.html')  Vega Lit Docs
+  .table__container
+    table.table.table--full-size.table--fixed
+      thead
+        tr.table__tr
+          th.table__th(width="100") Name
+          th.table__th(width="80") Type
+          th.table__th(width="180") Default
+          th.table__th(width="200") Description
+      tbody
+        tr.table__tr
+          td.table__td.utils--center(colspan="4"): strong Props
+
+        tr.table__tr
+          td.table__td: strong
+            a(href='https://vega.github.io/vega-lite/docs/spec.html#top-level-specifications') $schema
+          td.table__td String
+          td.table__td
+          td.table__td.
+            URL to JSON schema for a Vega-Lite specification.
+        tr.table__tr
+          td.table__td: strong
+            a(href='https://vega.github.io/vega-lite/docs/spec.html#common') description
+          td.table__td String
+          td.table__td
+          td.table__td.
+            An optional description of this visualization for commenting purpose.
+        tr.table__tr
+          td.table__td: strong
+            a(href='https://vega.github.io/vega-lite/docs/data.html') data
+          td.table__td Array || Object
+          td.table__td: kbd { values: [] }
+          td.table__td
+            | Tabular data, similar to a spreadsheet or a database table.
+            | Right now we support only <a href='https://vega.github.io/vega-lite/docs/data.html#inline'>inline data</a>, but without format and names
+            | In <em>vue-vega</em> we propose a shortcut,
+            | so you user can pass `[]` instead of `{ values: [] }`
+        tr.table__tr
+          td.table__td: strong
+            a(href='https://vega.github.io/vega-lite/docs/spec.html#single-view-spec') mark
+          td.table__td String||Object
+          td.table__td
+          td.table__td
+            | Required. A string describing the mark type
+            | (one of "bar", "circle", "square", "tick", "line", "area", "point", "rule", and "text")
+            | or a mark definition object.
+        tr.table__tr
+          td.table__td: strong
+           a(href='https://vega.github.io/vega-lite/docs/encoding.html') encoding
+
+          td.table__td Object
+          td.table__td
+          td.table__td
+            | An integral part of the data visualization process is encoding data with visual properties of graphical marks.

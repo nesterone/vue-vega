@@ -1,10 +1,10 @@
-import VegaLiteComponentExample from './VegaLiteComponentExample'
+import ReuseSpecsComponentExample from './ReuseSpecsComponentExample'
 import UpdateDataExample from './UpdateDataExample'
 import UpdateMarkExample from './UpdateMarkExample'
 import UpdateEncodingExample from './UpdateEncodingExample'
 
 export {
-  VegaLiteComponentExample,
+  ReuseSpecsComponentExample,
   UpdateDataExample,
   UpdateMarkExample,
   UpdateEncodingExample

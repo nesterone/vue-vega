@@ -8,7 +8,7 @@ export default {
   install (Vue) {
     Vue.component('vega-lite', VegaLiteComponent)
   },
-
+  VegaLiteComponent,
   mapVegaLiteSpecToComponentOptions,
   mapVegaSpecToComponentOptions
 }

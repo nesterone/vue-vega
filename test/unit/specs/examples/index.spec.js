@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import ComponentAsVegaLiteSpecExample from 'examples/ComponentAsVegaLiteSpecExample'
-import VegaLiteComponentExample from 'examples/VegaLiteComponentExample'
+import ReuseSpecsComponentExample from 'examples/ReuseSpecsComponentExample'
 import UpdateDataExample from 'examples/UpdateDataExample'
 import VueVega from 'src/index'
 
@@ -21,7 +21,7 @@ describe('Examples', () => {
   })
 
   it('runs sanity check for `vega components`', () => {
-    const Constructor = LocalVue.extend(VegaLiteComponentExample)
+    const Constructor = LocalVue.extend(ReuseSpecsComponentExample)
     const vm = new Constructor().$mount()
 
     expect(getAxisText(vm)).to.equal('a')
