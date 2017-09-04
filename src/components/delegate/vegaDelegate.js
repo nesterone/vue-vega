@@ -21,7 +21,13 @@ export default {
 
   streamDataToVegaView (vegaView, nextData, prevData, vegaSpec, changeset) {
     const localPrevData = vegaView.data(DEFAULT_DATA_SOURCE_NAME)
-    const changeSet = changeset().remove(localPrevData).insert(nextData)
+    let nextValues = nextData
+
+    if (nextData && !Array.isArray(nextData) && nextData.values) {
+      nextValues = nextData.values
+    }
+
+    const changeSet = changeset().remove(localPrevData).insert(nextValues)
     vegaView.change(DEFAULT_DATA_SOURCE_NAME, changeSet).run()
   }
 }

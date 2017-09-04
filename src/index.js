@@ -1,6 +1,6 @@
 import {VegaLiteComponent} from 'src/components/index'
 import {
-  mapVegaLiteSpecToComponentOptions,
+  mapVegaLiteSpec,
   mapVegaSpecToComponentOptions
 } from 'src/util/vueVegaUtils'
 
@@ -9,6 +9,6 @@ export default {
     Vue.component('vega-lite', VegaLiteComponent)
   },
   VegaLiteComponent,
-  mapVegaLiteSpecToComponentOptions,
+  mapVegaLiteSpec,
   mapVegaSpecToComponentOptions
 }

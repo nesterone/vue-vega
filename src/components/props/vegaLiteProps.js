@@ -6,7 +6,9 @@ export default {
   description: {
     type: String
   },
-  data: [Object, Array],
+  data: {
+    type: [Object, Array]
+  },
   mark: {
     type: String
   },

@@ -67,15 +67,15 @@
 
           pre.language-js
             code.
-              import {mapVegaLiteSpecToComponentOptions} from 'vue-vega'
+              import {mapVegaLiteSpec} from 'vue-vega'
               import BarChartSpec from 'spec/vega-lite/bar.vl.json'
 
               export default {
                 components: {
-                  BarChart: mapVegaLiteSpecToComponentOptions(BarChartSpec)
+                  BarChart: mapVegaLiteSpec(BarChartSpec)
                 }
               }
           p  As you may noticed, it's very natural to convert spec in component options with the help of a webpack.
-            |  We are actually have one for you
+            |  We are working on one for you
             strong
               a.typo__link(href='https://github.com/nesterone/vue-vega-webpack')  vue-vega-webpack

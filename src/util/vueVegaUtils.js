@@ -1,7 +1,7 @@
 import { cloneDeep, reduce, omit } from 'lodash-es'
 import { VegaLiteComponent } from 'src/components/index'
 
-export function mapVegaLiteSpecToComponentOptions (vegaLiteSpec) {
+export function mapVegaLiteSpec (vegaLiteSpec) {
   const NewComponentOptions = {}
   Object.assign(NewComponentOptions, VegaLiteComponent)
 

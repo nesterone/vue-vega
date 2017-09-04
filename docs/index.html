@@ -27,12 +27,12 @@ export default{
   &lt;div class='dashboard'>
    &lt;BarChart/>
   &lt;div/>
-&lt;/template></pre><pre class=language-js><code>import {mapVegaLiteSpecToComponentOptions} from 'vue-vega'
+&lt;/template></pre><pre class=language-js><code>import {mapVegaLiteSpec} from 'vue-vega'
 import BarChartSpec from 'spec/vega-lite/bar.vl.json'
 
 export default {
   components: {
-    BarChart: mapVegaLiteSpecToComponentOptions(BarChartSpec)
+    BarChart: mapVegaLiteSpec(BarChartSpec)
   }
 }</code></pre><p>As you may noticed, it's very natural to convert spec in component options with the help of a webpack. We are actually have one for you<strong><a class=typo__link href=https://github.com/nesterone/vue-vega-webpack> vue-vega-webpack</a></strong></p></div></div></section></div></div><div class=grid__row><div class=grid__column><section id=examples><h1 class=typo__h1>Examples</h1><hr class=typo__hr><div class=grid__row><div class=grid__column><h2 class=typo__h2 id=sub-vega-lite-component data-section>Vega Lite Component</h2><p>To leveratge components composition we provide <code>&lt;vega-lite/&gt;</code>, so you can pass any spec aspect of vega lite spec as Vue property</p><div class="example grid__row"><div class="grid__column grid__unit--md-5"><vega-lite-component-example></vega-lite-component-example></div><div class="grid__column grid__unit--md-7"><label class=typo__label>Code sample</label><div><pre class=language-javascript v-pre><code>export default{
   data () {

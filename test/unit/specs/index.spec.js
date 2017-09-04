@@ -21,8 +21,8 @@ describe('VueVega', () => {
     expect(Vue.component).to.have.been.calledWith('vega-lite', VegaLiteComponent)
   })
 
-  it('should export `mapVegaLiteSpecToComponentOptions`', () => {
-    expect(typeof VueVega.mapVegaLiteSpecToComponentOptions).to.equal('function')
+  it('should export `mapVegaLiteSpec`', () => {
+    expect(typeof VueVega.mapVegaLiteSpec).to.equal('function')
   })
 })
 

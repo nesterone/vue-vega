@@ -14,7 +14,7 @@ describe('Vega Lite Props', () => {
   })
 
   it('can have data which might be Object or Array', () => {
-    expect(vegaLiteProps.data).to.deep.equal([Object, Array])
+    expect(vegaLiteProps.data.type).to.deep.equal([Object, Array])
   })
 
   it('can have $schema as string', () => {

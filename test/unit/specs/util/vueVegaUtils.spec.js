@@ -1,5 +1,5 @@
 import {
-  mapVegaLiteSpecToComponentOptions,
+  mapVegaLiteSpec,
   mapVegaSpecToComponentOptions
 } from 'src/util/vueVegaUtils'
 
@@ -12,7 +12,7 @@ describe('vueVegaUtil', () => {
     console.info('Checking props for: ', specName)
 
     const spec = vegaLiteSpecSamples[specName]
-    const newVegaLiteComponent = mapVegaLiteSpecToComponentOptions(spec)
+    const newVegaLiteComponent = mapVegaLiteSpec(spec)
     const newVegaLiteComponentProps = newVegaLiteComponent.props
 
     for (let specPropKey of Object.keys(spec)) {

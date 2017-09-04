@@ -90,6 +90,18 @@ describe('vegaViewDelegate', () => {
       expect(changeset.insert).to.have.been.calledWith(nextData)
     })
 
+    it('should remove previous and insert next data.values to changeset', () => {
+      nextData = {
+        values: nextData
+      }
+
+      streamDataToVegaView(vegaView, nextData, prevData, vegaSpec, changeset)
+
+      expect(changeset.remove).to.have.been.calledWith(prevData)
+      expect(changeset.remove).to.have.been.calledBefore(changeset.insert)
+      expect(changeset.insert).to.have.been.calledWith(nextData.values)
+    })
+
     it('should change view`s dataset and trigger re-render', () => {
       streamDataToVegaView(vegaView, nextData, prevData, vegaSpec, changeset)
 

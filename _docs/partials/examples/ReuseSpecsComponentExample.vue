@@ -1,25 +1,17 @@
 <template lang="pug">
-  vega-lite(
-    :data="values",
-    mark="bar",
-    :encoding="encoding"
-  )
+  BarChart
 </template>
 
 <script>
-  export default{
-    data () {
-      return {
-        values: [
-          {a: 'A', b: 28}, {a: 'B', b: 55}, {a: 'C', b: 43},
-          {a: 'D', b: 91}, {a: 'E', b: 81}, {a: 'F', b: 53},
-          {a: 'G', b: 19}, {a: 'H', b: 87}, {a: 'I', b: 52}
-        ],
-        encoding: {
-          x: {field: 'a', type: 'ordinal'},
-          y: {field: 'b', type: 'quantitative'}
-        }
-      }
+  import VueVega from 'vue-vega'
+  import BarChartSpec from 'spec/vega-lite/bar.vl.json'
+
+  const component = VueVega.mapVegaLiteSpec(BarChartSpec);
+  console.log(component)
+
+  export default {
+    components: {
+      BarChart: VueVega.mapVegaLiteSpec(BarChartSpec)
     }
   }
 </script>
