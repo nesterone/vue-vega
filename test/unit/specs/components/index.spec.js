@@ -1,7 +1,9 @@
 import {VegaLiteComponent} from 'src/components/index'
-import vegaLiteProps from 'src/components/props/vegaLiteProps'
 import vegaLiteComputed from 'src/components/props/vegaLiteComputed'
 import vegaLiteDelegate from 'src/components/delegate/vegaLiteDelegate'
+import {
+  VEGA_LITE_SCHEMA_URL
+} from 'src/constants'
 
 describe('Components', () => {
   describe('VegaLiteComponent', () => {
@@ -13,8 +15,8 @@ describe('Components', () => {
       expect(VegaLiteComponent.name).to.equal('vega-lite')
     })
 
-    xit('should have default props', () => {
-      expect(VegaLiteComponent.props).to.deep.equal(vegaLiteProps)
+    it('should have default for $schema', () => {
+      expect(VegaLiteComponent.props.$schema.default).to.equal(VEGA_LITE_SCHEMA_URL)
     })
 
     it('should have default computed', () => {
