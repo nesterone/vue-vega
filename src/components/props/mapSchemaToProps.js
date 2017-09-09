@@ -1,6 +1,14 @@
 import { mapValues, reduce } from 'lodash-es'
 
-export default function mapSchemaToProps ({definitions: {CompositeUnitSpecAlias: {properties}}}) {
+export default function mapSchemaToProps (vegaLiteSchema) {
+  const {
+   definitions: {
+     TopLevelFacetedUnitSpec: {
+       properties
+     }
+   }
+  } = vegaLiteSchema
+
   return mapValues(properties, (schemaPropValue) => {
     let type = mapSchemaTypeToEsType(schemaPropValue.type)
 
@@ -32,12 +40,16 @@ function mapSchemaRefToEsType (ref) {
   switch (ref) {
     case '#/definitions/Data':
       return [Object, Array]
-    case '#/definitions/Encoding':
+    case '#/definitions/EncodingWithFacet':
       return Object
     case '#/definitions/AnyMark':
       return String
     case '#/definitions/SelectionDef':
       return Object
+    case '#/definitions/Config':
+      return Object
+    case '#/definitions/Padding':
+      return [Number, Object]
   }
 }
 
@@ -53,6 +65,8 @@ function mapSchemaTypeToEsType (schemaType) {
       return Number
     case 'array':
       return Array
+    case 'boolean':
+      return Boolean
     case 'object':
       return Object
   }

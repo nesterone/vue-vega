@@ -8,6 +8,21 @@ describe('Map Vega Lite Schema to Vue Props', () => {
     const props = mapSchemaToProps(vegaLiteSchema)
 
     expect(props).to.deep.equal({
+      $schema: {
+        type: String
+      },
+      autoResize: {
+        type: Boolean
+      },
+      background: {
+        type: String
+      },
+      padding: {
+        type: [Number, Object]
+      },
+      config: {
+        type: Object
+      },
       data: {
         type: [Object, Array]
       },
