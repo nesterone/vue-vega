@@ -23,6 +23,7 @@ module.exports = {
     modules: [
       resolve('src'),
       resolve('spec'),
+      resolve('schema'),
       resolve('_docs'),
       resolve('node_modules')
     ],
@@ -32,7 +33,8 @@ module.exports = {
       'src': path.resolve(__dirname, '../src'),
       'assets': path.resolve(__dirname, '../_docs/assets'),
       'examples': path.resolve(__dirname, '../_docs/partials/examples'),
-      'spec': path.resolve(__dirname, '../spec')
+      'spec': path.resolve(__dirname, '../spec'),
+      'schema': path.resolve(__dirname, '../schema')
     }
   },
   module: {
@@ -41,7 +43,12 @@ module.exports = {
         test: /\.(js|vue)$/,
         loader: 'eslint-loader',
         enforce: 'pre',
-        include: [resolve('src'), resolve('test'), resolve('spec')],
+        include: [
+          resolve('src'),
+          resolve('test'),
+          resolve('spec'),
+          resolve('schema')
+        ],
         options: {
           formatter: require('eslint-friendly-formatter')
         }
@@ -54,12 +61,21 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        include: [resolve('src'), resolve('_docs'), resolve('test'), resolve('spec')]
+        include: [
+          resolve('src'),
+          resolve('_docs'),
+          resolve('test'),
+          resolve('spec'),
+          resolve('schema')
+        ]
       },
       {
         test: /\.pug$/,
         use: 'pug-loader',
-        include: [resolve('src'), resolve('_docs')]
+        include: [
+          resolve('src'),
+          resolve('_docs')
+        ]
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,

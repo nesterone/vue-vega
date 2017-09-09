@@ -8,7 +8,7 @@ import vegaLiteSpecSamples from '../vegaLiteSpecSamples'
 describe('vueVegaUtil', () => {
   const sandbox = sinon.sandbox.create()
 
-  function checkComponentProps (specName) {
+  function checkComponentPropsDefaults (specName) {
     console.info('Checking props for: ', specName)
 
     const spec = vegaLiteSpecSamples[specName]
@@ -34,7 +34,7 @@ describe('vueVegaUtil', () => {
 
   it('should map spec to components with props equals to spec props', () => {
     const sampleNames = Object.keys(vegaLiteSpecSamples)
-    sampleNames.forEach((sampleName) => checkComponentProps(sampleName))
+    sampleNames.forEach((sampleName) => checkComponentPropsDefaults(sampleName))
   })
 })
 
