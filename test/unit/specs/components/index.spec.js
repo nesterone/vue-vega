@@ -1,5 +1,5 @@
-import {VegaLiteComponent} from 'src/components/index'
-import vegaLiteComputed from 'src/components/props/vegaLiteComputed'
+import {VegaLiteComponent} from 'src/components'
+import vegaLiteComputed from 'src/components/computed'
 import vegaLiteDelegate from 'src/components/delegate/vegaLiteDelegate'
 import {
   VEGA_LITE_SCHEMA_URL
