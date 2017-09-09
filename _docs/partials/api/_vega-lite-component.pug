@@ -31,6 +31,13 @@
             An optional description of this visualization for commenting purpose.
         tr.table__tr
           td.table__td: strong
+            a(href='https://vega.github.io/vega-lite/docs/transform.html') transform
+          td.table__td Array
+          td.table__td
+          td.table__td
+            | The top-level transform object is an array of objects describing transformations
+        tr.table__tr
+          td.table__td: strong
             a(href='https://vega.github.io/vega-lite/docs/data.html') data
           td.table__td Array || Object
           td.table__td: kbd { values: [] }
@@ -51,8 +58,50 @@
         tr.table__tr
           td.table__td: strong
            a(href='https://vega.github.io/vega-lite/docs/encoding.html') encoding
-
           td.table__td Object
           td.table__td
           td.table__td
             | An integral part of the data visualization process is encoding data with visual properties of graphical marks.
+        tr.table__tr
+          td.table__td: strong
+            a(href='https://vega.github.io/vega-lite/docs/spec.html#top-level-specifications') autoResize
+          td.table__td Boolean
+          td.table__td
+          td.table__td
+            | Resize is a boolean indicating if autosize layout should be re-calculated on every update.
+        tr.table__tr
+          td.table__td: strong
+            a(href='https://vega.github.io/vega-lite/docs/spec.html#top-level-specifications') background
+          td.table__td String
+          td.table__td
+          td.table__td
+            | CSS color property to use as the background of visualization.
+        tr.table__tr
+          td.table__td: strong
+            a(href='https://vega.github.io/vega-lite/docs/spec.html#top-level-specifications') padding
+          td.table__td Number || Object
+          td.table__td
+          td.table__td
+            | The default visualization padding, in pixels
+        tr.table__tr
+          td.table__td: strong
+            a(href='https://vega.github.io/vega-lite/docs/config.html') config
+          td.table__td Object
+          td.table__td
+          td.table__td
+            | Vega-Lite configuration object.
+        tr.table__tr
+          td.table__td: strong
+            a(href='https://vega.github.io/vega-lite/docs/spec.html#single') width
+          td.table__td Number
+          td.table__td
+          td.table__td
+            | The width of a visualization.
+        tr.table__tr
+          td.table__td: strong
+            a(href='https://vega.github.io/vega-lite/docs/spec.html#single') height
+          td.table__td Number
+          td.table__td
+          td.table__td
+            | The height of a visualization.
+
