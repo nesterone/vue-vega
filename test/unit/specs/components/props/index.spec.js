@@ -1,15 +1,14 @@
-import mapSchemaToProps from 'src/components/props/mapSchemaToProps'
-import vegaLiteSchema from 'schema/vega-lite-schema.json'
-
-console.log(vegaLiteSchema)
+import props from 'src/components/props'
+import {
+  VEGA_LITE_SCHEMA_URL
+} from 'src/constants'
 
 describe('Map Vega Lite Schema to Vue Props', () => {
   it('can have description as string', () => {
-    const props = mapSchemaToProps(vegaLiteSchema)
-
     expect(props).to.deep.equal({
       $schema: {
-        type: String
+        type: String,
+        default: VEGA_LITE_SCHEMA_URL
       },
       autoResize: {
         type: Boolean
