@@ -10,7 +10,11 @@ export default {
     return assemblePropsToSpec.call(this, vegaLiteProps)
   },
   dataUrl () {
-    return null
+    let url
+    if (this.data && this.data.url) {
+      url = this.data.url
+    }
+    return url
   }
 }
 

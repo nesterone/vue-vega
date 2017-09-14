@@ -8,6 +8,12 @@ export default function assemblePropsToSpec (props) {
 
   props = omit(props, 'data')
 
+  if (this.dataUrl) {
+    props.data = {
+      url: this.dataUrl
+    }
+  }
+
   return reduce(props, function (memo, value, key) {
     const contextValue = context[key]
     if (contextValue) {
