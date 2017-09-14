@@ -8,6 +8,9 @@ export default {
   },
   vegaLiteSpec () {
     return assemblePropsToSpec.call(this, vegaLiteProps)
+  },
+  dataUrl () {
+    return null
   }
 }
 

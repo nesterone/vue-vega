@@ -1,13 +1,12 @@
 <template lang="pug">
-  BarChart
+  BarChart(
+    :data="{url: 'data/population'}"
+  )
 </template>
 
 <script>
   import VueVega from 'vue-vega'
-  import BarChartSpec from 'spec/vega-lite/bar.vl.json'
-
-  const component = VueVega.mapVegaLiteSpec(BarChartSpec)
-  console.log(component)
+  import BarChartSpec from 'spec/vega-lite/bar_1d.vl.json'
 
   export default {
     components: {

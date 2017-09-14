@@ -1,12 +1,4 @@
 +section('Examples')
-  // TODO: in `Provide explicit spec to component API instead of implicit proxy over extend` #23
-  //+subsection('Component as Vega Lite Spec')
-  //  :markdown-it
-  //    Use vega lite properties as custom options for Vue component,
-  //    no need to wire them with Vue props. For the sake of example it's in one file, you
-  //    probably would keep spec-like components in separate modules
-  //
-  //  +example('ComponentAsVegaLiteSpecExample')
   +subsection('Reuse Specs')
     :markdown-it
       One of the main features of vega it's an ability to reuse in in
@@ -16,6 +8,14 @@
       some collection
 
     +example('ReuseSpecsComponentExample')
+
+  +subsection('Data Uri')
+    :markdown-it
+     In some scenarious you even no need to fetch data manually, for example
+     data is already stored in JSON, CSV file, provide url and vega spec would load
+     data under the hood
+
+    +example('DataUrlExampleExample')
 
   +subsection('Update Data')
     :markdown-it

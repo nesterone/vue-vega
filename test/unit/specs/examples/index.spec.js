@@ -1,5 +1,4 @@
 import Vue from 'vue'
-import ComponentAsVegaLiteSpecExample from 'examples/ComponentAsVegaLiteSpecExample'
 import ReuseSpecsComponentExample from 'examples/ReuseSpecsComponentExample'
 import UpdateDataExample from 'examples/UpdateDataExample'
 import VueVega from 'src/index'
@@ -12,13 +11,6 @@ describe('Examples', () => {
   function getAxisText (vm) {
     return vm.$el.querySelector('.mark-text.role-axis-title text').textContent
   }
-
-  xit('runs sanity check for `components as spec`', () => {
-    const Constructor = LocalVue.extend(ComponentAsVegaLiteSpecExample)
-    const vm = new Constructor().$mount()
-
-    expect(getAxisText(vm)).to.equal('a')
-  })
 
   it('runs sanity check for `vega components`', () => {
     const Constructor = LocalVue.extend(ReuseSpecsComponentExample)

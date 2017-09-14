@@ -1,0 +1,41 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
+  "data": {
+    "values": [
+      {
+        "year": 1850,
+        "age": 0,
+        "sex": 1,
+        "people": 1483789
+      },
+      {
+        "year": 1850,
+        "age": 0,
+        "sex": 2,
+        "people": 1450376
+      },
+      {
+        "year": 1850,
+        "age": 5,
+        "sex": 1,
+        "people": 1411067
+      }
+    ]
+  },
+  "transform": [
+    {
+      "filter": "datum.year == 2000"
+    }
+  ],
+  "mark": "bar",
+  "encoding": {
+    "x": {
+      "aggregate": "sum",
+      "field": "people",
+      "type": "quantitative",
+      "axis": {
+        "title": "population"
+      }
+    }
+  }
+}
