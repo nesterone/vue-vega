@@ -1,6 +1,6 @@
 <template lang="pug">
   BarChart(
-    :data="{url: 'data/population'}"
+    :data="{url: 'data/population.json'}"
   )
 </template>
 
