@@ -9,7 +9,7 @@ export default function assemblePropsToSpec (props) {
   props = omit(props, 'data')
 
   if (this.dataUrl) {
-    props.data = {
+    result.data = {
       url: this.dataUrl
     }
   }

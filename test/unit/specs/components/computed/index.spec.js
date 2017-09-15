@@ -7,7 +7,7 @@ describe('vegaLiteComputed', () => {
   let vegaLiteSpecResult
   let vegaLiteCompileDelegate
   let context
-  let {vegaSpec, vegaLiteSpec} = vegaLiteComputed
+  let {vegaSpec, vegaLiteSpec, dataUrl} = vegaLiteComputed
 
   beforeEach(() => {
     vegaLiteSpecProps = {
@@ -108,6 +108,21 @@ describe('vegaLiteComputed', () => {
     vegaSpec.call(context)
 
     expect(context.compileVegaLite).to.have.calledWith(vegaLiteSpecResult)
+  })
+
+  it('should get data url', () => {
+    const expectedDataUrl = 'bla/bla'
+    context.data = {url: expectedDataUrl}
+
+    const result = dataUrl.call(context)
+
+    expect(result).to.equal(expectedDataUrl)
+  })
+
+  it('should be undefined if no data url was provided', () => {
+    const result = dataUrl.call(context)
+
+    expect(result).to.equal(undefined)
   })
 
   it('should compile vega lite spec and provide a vega spec', () => {

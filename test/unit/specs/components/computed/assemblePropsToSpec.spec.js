@@ -42,4 +42,14 @@ describe('assemblePropsToSpec', () => {
 
     expect(specResult).to.deep.equal(vegaLiteSpecResult)
   })
+
+  it('should override data with url if dataUrl available in context', () => {
+    const expectedUrl = 'bla/bla'
+    context.dataUrl = expectedUrl
+    vegaLiteSpecResult.data = {url: expectedUrl}
+
+    const specResult = assemblePropsToSpec.call(context, props)
+
+    expect(specResult).to.deep.equal(vegaLiteSpecResult)
+  })
 })
