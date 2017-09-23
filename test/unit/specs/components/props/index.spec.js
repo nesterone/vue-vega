@@ -51,6 +51,12 @@ describe('Map Vega Lite Schema to Vue Props', () => {
       },
       width: {
         type: Number
+      },
+      layer: {
+        type: Array
+      },
+      resolve: {
+        type: Object
       }
     })
   })

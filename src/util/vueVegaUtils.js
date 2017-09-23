@@ -1,4 +1,4 @@
-import { cloneDeep, reduce, omit } from 'lodash-es'
+import { cloneDeep, reduce } from 'lodash-es'
 import { VegaLiteComponent } from 'src/components/index'
 
 export function mapVegaLiteSpec (vegaLiteSpec) {
@@ -9,12 +9,13 @@ export function mapVegaLiteSpec (vegaLiteSpec) {
 
   newComponentProps = reduce(vegaLiteSpec, (memo, propValue, propName) => {
     let prop = memo[propName]
-    if (prop.default) {
-      prop = omit(prop, 'default')
+
+    if (prop) {
+      if (propValue) {
+        prop.default = () => propValue
+      }
       memo[propName] = prop
     }
-
-    prop.default = () => propValue
 
     return memo
   }, newComponentProps)

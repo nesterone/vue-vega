@@ -7,7 +7,9 @@ export default {
     return compileOutput.spec
   },
   vegaLiteSpec () {
-    return assemblePropsToSpec.call(this, vegaLiteProps)
+    const vegaLiteSpec = assemblePropsToSpec.call(this, vegaLiteProps)
+    console.log(JSON.stringify(vegaLiteSpec))
+    return vegaLiteSpec
   },
   dataUrl () {
     let url

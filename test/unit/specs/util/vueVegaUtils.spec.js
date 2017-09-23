@@ -17,6 +17,8 @@ describe('vueVegaUtil', () => {
 
     for (let specPropKey of Object.keys(spec)) {
       const componentPropDefinition = newVegaLiteComponentProps[specPropKey]
+      console.info('Checking spec props key for: ', specPropKey)
+
       const defaultPropValue = componentPropDefinition.default()
       const specPropValue = spec[specPropKey]
 

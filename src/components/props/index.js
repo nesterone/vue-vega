@@ -47,6 +47,12 @@ const vegaLiteProps = {
   },
   width: {
     type: Number
+  },
+  layer: {
+    type: Array
+  },
+  resolve: {
+    type: Object
   }
 }
 

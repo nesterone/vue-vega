@@ -28,8 +28,8 @@
   },
   "dependencies": {
     "lodash-es": "^4.17.4",
-    "vega": "^3.0.0-rc1",
-    "vega-lite": "^2.0.0-beta.6",
+    "vega": "^3.0.2",
+    "vega-lite": "^2.0.0-rc3",
     "vue": "^2.3.3"
   },
   "devDependencies": {
