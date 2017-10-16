@@ -7,6 +7,7 @@ export default {
 
   mounted () {
     this.mountVegaView(this.$vg, this.$el)
+    this.addSignalEmitter(this.$vg, this.vegaSpec, this)
     this.streamDataToVegaView(
       this.$vg,
       this.data,

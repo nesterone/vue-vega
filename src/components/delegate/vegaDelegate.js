@@ -1,7 +1,11 @@
 import { partial } from 'lodash-es'
 import { parse, View, Warn } from 'vega'
 import {createView} from 'src/components/util/vegaHelpers'
-import { RENDER_TYPE, DEFAULT_DATA_SOURCE_NAME } from 'src/constants'
+import {
+  RENDER_TYPE,
+  DEFAULT_DATA_SOURCE_NAME,
+  SIGNAL_EVENT_PREFIX
+} from 'src/constants'
 
 export default {
   createVegaView: partial(createView, {
@@ -13,6 +17,18 @@ export default {
 
   mountVegaView (vegaView, element) {
     vegaView.initialize(element).run()
+  },
+
+  addSignalEmitter (vegaView, spec, component) {
+    const { signals } = spec
+    if (signals && signals.length > 0) {
+      signals.forEach(signal => {
+        vegaView.addSignalListener(signal.name, (name, value) => {
+          const eventName = `${SIGNAL_EVENT_PREFIX}:${name}`
+          component.$emit(eventName, value)
+        })
+      })
+    }
   },
 
   destroyVegaView (vegaView) {

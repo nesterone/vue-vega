@@ -15,6 +15,7 @@ describe('Vega Spec Watch', () => {
       createVegaView: sandbox.stub(),
       mountVegaView: sandbox.stub(),
       destroyVegaView: sandbox.stub(),
+      addSignalEmitter: sandbox.stub(),
       streamDataToVegaView: sandbox.stub()
     }
 
@@ -63,6 +64,7 @@ describe('Vega Spec Watch', () => {
     vegaSpecWatch.handler.call(context, vegaSpec)
 
     expect(vegaDelegate.mountVegaView).to.have.been.calledWith(vegaView, elem)
+    expect(vegaDelegate.addSignalEmitter).to.have.been.calledWith(vegaView, vegaSpec, context)
     expect(vegaDelegate.streamDataToVegaView).to.have.been.calledWith(vegaView, data, null, vegaSpec, changeset)
   })
 })

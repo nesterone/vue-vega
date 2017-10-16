@@ -1,14 +1,17 @@
 import vegaDelegate from 'src/components/delegate/vegaDelegate'
 import simpleBarSpec from 'spec/vega/bar-simple.vg.json'
-import {DEFAULT_DATA_SOURCE_NAME} from 'src/constants'
+import { DEFAULT_DATA_SOURCE_NAME } from 'src/constants'
 
 describe('vegaViewDelegate', () => {
   const sandbox = sinon.sandbox.create()
   let vegaView
   let element
+  let spec
+  let component
   let {
     createVegaView,
     mountVegaView,
+    addSignalEmitter,
     destroyVegaView,
     streamDataToVegaView
   } = vegaDelegate
@@ -17,10 +20,19 @@ describe('vegaViewDelegate', () => {
     vegaView = {
       initialize: sandbox.stub(),
       run: sandbox.stub(),
-      finalize: sandbox.stub()
+      finalize: sandbox.stub(),
+      addSignalListener: sandbox.stub()
     }
 
     element = 'el'
+
+    component = {
+      $emit: sandbox.stub()
+    }
+
+    spec = {
+      signals: [{name: 'click'}, {name: 'custom'}]
+    }
 
     vegaView.initialize.returns(vegaView)
     vegaView.run.returns(vegaView)
@@ -41,6 +53,24 @@ describe('vegaViewDelegate', () => {
     destroyVegaView(vegaView)
 
     expect(vegaView.finalize).to.have.been.called
+  })
+
+  it('should add listeners to view if spec has signals', () => {
+    addSignalEmitter(vegaView, spec, component)
+
+    expect(vegaView.addSignalListener).to.have.been.calledTwice
+    expect(vegaView.addSignalListener.firstCall).to.have.been.calledWith('click')
+    expect(vegaView.addSignalListener.secondCall).to.have.been.calledWith('custom')
+  })
+
+  it('should emit signal through component', () => {
+    addSignalEmitter(vegaView, spec, component)
+
+    let callback = vegaView.addSignalListener.firstCall.args[1]
+
+    callback('name', 'value')
+
+    expect(component.$emit).to.have.been.calledWith('signal:name', 'value')
   })
 
   it('should create vega view', () => {

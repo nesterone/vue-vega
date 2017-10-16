@@ -5,6 +5,7 @@ import UpdateEncodingExample from './UpdateEncodingExample'
 import DataUrlExampleExample from './DataUrlExampleExample'
 import LayeringExample from './LayeringExample'
 import TrellisExample from './TrellisExample'
+import InteractivityExample from './InteractivityExample'
 
 export {
   ReuseSpecsComponentExample,
@@ -13,5 +14,6 @@ export {
   UpdateMarkExample,
   UpdateEncodingExample,
   LayeringExample,
-  TrellisExample
+  TrellisExample,
+  InteractivityExample
 }
