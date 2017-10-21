@@ -16,7 +16,8 @@ describe('Component Lifecycle hooks', () => {
       mountVegaView: sandbox.stub(),
       destroyVegaView: sandbox.stub(),
       streamDataToVegaView: sandbox.stub(),
-      addSignalEmitter: sandbox.stub()
+      addSignalEmitter: sandbox.stub(),
+      addEventEmitter: sandbox.stub()
     }
 
     context = {
@@ -52,6 +53,7 @@ describe('Component Lifecycle hooks', () => {
 
     expect(vegaDelegate.mountVegaView).to.have.been.calledWith(vegaView, elem)
     expect(vegaDelegate.addSignalEmitter).to.have.been.calledWith(vegaView, vegaSpec, context)
+    expect(vegaDelegate.addEventEmitter).to.have.been.calledWith(vegaView, context)
     expect(vegaDelegate.streamDataToVegaView).to.have.been.calledAfter(vegaDelegate.mountVegaView)
     expect(vegaDelegate.streamDataToVegaView).to.have.been.calledWith(vegaView, data, null, vegaSpec, changeset)
   })

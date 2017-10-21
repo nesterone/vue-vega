@@ -1,0 +1,31 @@
++subsection('Events')
+  p.typo__p
+    |  Events for <em>VegaLiteComponent</em>
+  .table__container
+    table.table.table--full-size
+      thead
+        tr.table__tr
+          th.table__th(width="150") Name
+          th.table__th(width="100") Attributes
+          th.table__th(width="150") Listen to
+          th.table__th(width="250") Description
+      tbody
+        tr.table__tr
+          td.table__td: strong Signal
+          td.table__td: kbd (tuple)
+          td.table__td: kbd @signal:name
+          td.table__td
+            | Subscribe to signal defined in vega spec,
+            = " "
+            kbd name
+            |  is a name of signal, you can find all signals at
+            = " "
+            kbd this.vegaSpec.signals
+        tr.table__tr
+          td.table__td: strong Click
+          td.table__td: kbd (DomEvent, item)
+          td.table__td: kbd @click or @mouseover or etc.
+          td.table__td
+            | Delegate DOM events, you can use 'click', 'mouseover' etc.
+            kbd item.datum
+            |  contains fields which usually you interested in

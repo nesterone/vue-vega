@@ -1,6 +1,8 @@
 import vegaDelegate from 'src/components/delegate/vegaDelegate'
 import simpleBarSpec from 'spec/vega/bar-simple.vg.json'
-import { DEFAULT_DATA_SOURCE_NAME } from 'src/constants'
+import {
+  DEFAULT_DATA_SOURCE_NAME
+} from 'src/constants'
 
 describe('vegaViewDelegate', () => {
   const sandbox = sinon.sandbox.create()
@@ -12,6 +14,7 @@ describe('vegaViewDelegate', () => {
     createVegaView,
     mountVegaView,
     addSignalEmitter,
+    addEventEmitter,
     destroyVegaView,
     streamDataToVegaView
   } = vegaDelegate
@@ -21,7 +24,8 @@ describe('vegaViewDelegate', () => {
       initialize: sandbox.stub(),
       run: sandbox.stub(),
       finalize: sandbox.stub(),
-      addSignalListener: sandbox.stub()
+      addSignalListener: sandbox.stub(),
+      addEventListener: sandbox.stub()
     }
 
     element = 'el'
@@ -42,6 +46,13 @@ describe('vegaViewDelegate', () => {
     sandbox.restore()
   })
 
+  it('should create vega view', () => {
+    // TODO: in #22, we want to change that partial got proper function
+    vegaView = createVegaView(simpleBarSpec)
+
+    expect(vegaView).to.be.ok
+  })
+
   it('should initialize vega view within provided element', () => {
     mountVegaView(vegaView, element)
 
@@ -55,29 +66,51 @@ describe('vegaViewDelegate', () => {
     expect(vegaView.finalize).to.have.been.called
   })
 
-  it('should add listeners to view if spec has signals', () => {
-    addSignalEmitter(vegaView, spec, component)
+  describe('Emitting Signals', () => {
+    it('should add listeners to view if spec has signals', () => {
+      addSignalEmitter(vegaView, spec, component)
 
-    expect(vegaView.addSignalListener).to.have.been.calledTwice
-    expect(vegaView.addSignalListener.firstCall).to.have.been.calledWith('click')
-    expect(vegaView.addSignalListener.secondCall).to.have.been.calledWith('custom')
+      expect(vegaView.addSignalListener).to.have.been.calledTwice
+      expect(vegaView.addSignalListener.firstCall).to.have.been.calledWith('click')
+      expect(vegaView.addSignalListener.secondCall).to.have.been.calledWith('custom')
+    })
+
+    it('should emit signal through component', () => {
+      addSignalEmitter(vegaView, spec, component)
+
+      let callback = vegaView.addSignalListener.firstCall.args[1]
+
+      callback('name', 'value')
+
+      expect(component.$emit).to.have.been.calledWith('signal:name', 'value')
+    })
   })
 
-  it('should emit signal through component', () => {
-    addSignalEmitter(vegaView, spec, component)
+  describe('Emitting `native-like` Events', () => {
+    beforeEach(() => {
+      const fakeHandler = sandbox.stub()
+      component.$listeners = {
+        click: fakeHandler,
+        custom: fakeHandler
+      }
+    })
 
-    let callback = vegaView.addSignalListener.firstCall.args[1]
+    it('should add listeners to view if spec has signals', () => {
+      addEventEmitter(vegaView, component)
 
-    callback('name', 'value')
+      expect(vegaView.addEventListener).to.have.been.calledOnce
+      expect(vegaView.addEventListener.firstCall).to.have.been.calledWith('click')
+    })
 
-    expect(component.$emit).to.have.been.calledWith('signal:name', 'value')
-  })
+    it('should emit `native-like` event through component', () => {
+      addEventEmitter(vegaView, component)
 
-  it('should create vega view', () => {
-    // TODO: in #22, we want to change that partial got proper function
-    vegaView = createVegaView(simpleBarSpec)
+      let callback = vegaView.addEventListener.firstCall.args[1]
 
-    expect(vegaView).to.be.ok
+      callback('domEvent', 'item')
+
+      expect(component.$emit).to.have.been.calledWith('click', 'domEvent', 'item')
+    })
   })
 
   describe('stream data to vega view', () => {

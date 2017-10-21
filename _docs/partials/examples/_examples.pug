@@ -11,9 +11,9 @@
 
   +subsection('Data Uri')
     :markdown-it
-     In some scenarious you even no need to fetch data manually, for example
-     data is already stored in JSON, CSV file, provide url and vega spec would load
-     data under the hood
+      In some scenarious you even no need to fetch data manually, for example
+      data is already stored in JSON, CSV file, provide url and vega spec would load
+      data under the hood
 
     +example('DataUrlExampleExample')
 
@@ -43,8 +43,17 @@
       Able to render layering with resolve
 
     +example('TrellisExample')
-  +subsection('Interactivity')
+  +subsection('Event Interactivity')
     :markdown-it
-      Subscribe to various signals
+      Allow to subscribe to all native-like events and get information
+      about selected datum.
 
-    +example('InteractivityExample')
+
+  +example('EventInteractivityExample')
+  +subsection('Signal Interactivity')
+    :markdown-it
+      Allow to subscribe to low-level vega spec signals, not sure on what to doe with
+      them. If you need just a data prever 'native-like' events over signals
+
+    +example('SignalInteractivityExample')
+
