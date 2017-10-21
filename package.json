@@ -20,7 +20,7 @@
     "build:bundle": "rm -rf dist && BUILD=web webpack --config build/webpack.bundle.conf.js",
     "build:lib": "rm -rf lib && BUILD=lib babel src --out-dir lib",
     "build:docs": "rm -rf docs && mkdir docs && node build/docs.js",
-    "build:docs:data": "rm -rf docs/data && mkdir docs/data && cpy 'data/*.json' 'docs/data/'",
+    "build:docs:data": "rm -rf docs/data && mkdir docs/data && cpy 'data/*.json' 'docs/data/' && cpy 'data/*.csv' 'docs/data/'",
     "build": "npm run build:lib && npm run build:bundle && npm run build:docs && npm run build:docs:data",
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
     "test": "npm run unit",
