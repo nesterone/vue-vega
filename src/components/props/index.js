@@ -6,8 +6,8 @@ const vegaLiteProps = {
   $schema: {
     type: String
   },
-  autoResize: {
-    type: Boolean
+  autosize: {
+    type: [String, Object]
   },
   background: {
     type: String

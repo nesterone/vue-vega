@@ -23,6 +23,6 @@ describe('Examples', () => {
     const Constructor = LocalVue.extend(UpdateDataExample)
     const vm = new Constructor().$mount()
 
-    expect(getAxisText(vm)).to.equal('BIN(val)')
+    expect(getAxisText(vm)).to.equal('val (binned)')
   })
 })

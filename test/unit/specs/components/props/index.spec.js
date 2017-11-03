@@ -10,8 +10,8 @@ describe('Map Vega Lite Schema to Vue Props', () => {
         type: String,
         default: VEGA_LITE_SCHEMA_URL
       },
-      autoResize: {
-        type: Boolean
+      autosize: {
+        type: [String, Object]
       },
       background: {
         type: String

@@ -14,7 +14,7 @@ describe('vegaLiteComputed', () => {
       $schema: 'https://vega.github.io/schema/vega-lite/v2.json',
       height: 12,
       width: 11,
-      autoResize: true,
+      autosize: 'fit',
       background: 'red',
       padding: 10,
       config: {
@@ -52,7 +52,7 @@ describe('vegaLiteComputed', () => {
       },
       height: 12,
       width: 11,
-      autoResize: true,
+      autosize: 'fit',
       background: 'red',
       padding: 10,
       config: {
