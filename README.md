@@ -1,6 +1,6 @@
 # vue-vega
 
-[Vega Lite](https://vega.github.io/vega-lite/) and [Vega](https://vega.github.io/vega/)
+[Vega-Lite](https://vega.github.io/vega-lite/) and [Vega](https://vega.github.io/vega/)
  bridge to [Vue.js](https://vuejs.org/) ecosystem
 
 ## Intro
