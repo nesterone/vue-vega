@@ -7,6 +7,7 @@ import LayeringExample from './LayeringExample'
 import TrellisExample from './TrellisExample'
 import SignalInteractivityExample from './SignalInteractivityExample'
 import EventInteractivityExample from './EventInteractivityExample'
+import FullSpecAsPropExample from './FullSpecAsPropExample'
 
 export {
   ReuseSpecsComponentExample,
@@ -17,5 +18,6 @@ export {
   LayeringExample,
   TrellisExample,
   SignalInteractivityExample,
-  EventInteractivityExample
+  EventInteractivityExample,
+  FullSpecAsPropExample
 }

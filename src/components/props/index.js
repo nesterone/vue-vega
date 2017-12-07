@@ -1,10 +1,12 @@
-import {
-  VEGA_LITE_SCHEMA_URL
-} from 'src/constants'
+import {VEGA_LITE_SCHEMA_URL} from 'src/constants'
 
-const vegaLiteProps = {
+export default {
+  spec: {
+    type: Object
+  },
   $schema: {
-    type: String
+    type: String,
+    default: VEGA_LITE_SCHEMA_URL
   },
   autosize: {
     type: [String, Object]
@@ -56,6 +58,3 @@ const vegaLiteProps = {
   }
 }
 
-vegaLiteProps.$schema.default = VEGA_LITE_SCHEMA_URL
-
-export default vegaLiteProps

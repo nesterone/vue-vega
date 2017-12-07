@@ -7,7 +7,13 @@ export default {
     return compileOutput.spec
   },
   vegaLiteSpec () {
-    const vegaLiteSpec = assemblePropsToSpec.call(this, vegaLiteProps)
+    let vegaLiteSpec = assemblePropsToSpec.call(this, vegaLiteProps)
+
+    const fullSpec = this.spec
+    if (fullSpec) {
+      Object.assign(vegaLiteSpec, fullSpec)
+    }
+
     console.log(JSON.stringify(vegaLiteSpec))
     return vegaLiteSpec
   },

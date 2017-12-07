@@ -1,4 +1,4 @@
-import { omit, reduce } from 'lodash-es'
+import {omit, reduce} from 'lodash-es'
 
 export default function assemblePropsToSpec (props) {
   const result = {
@@ -13,6 +13,7 @@ export default function assemblePropsToSpec (props) {
       url: this.dataUrl
     }
   }
+  // TODO: if spec prop exist, pick it and merge all other in it
 
   return reduce(props, function (memo, value, key) {
     const contextValue = context[key]
