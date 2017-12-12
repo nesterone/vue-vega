@@ -32,12 +32,18 @@ describe('vegaLiteComputed', () => {
           as: 'bin_IMDB_Rating'
         }
       ],
-      description: 'BlaBla',
       mark: 'bar',
       encoding: {
         x: {field: 'a', type: 'Q'}
       },
-      data: [1, 2, 3]
+      data: [1, 2, 3],
+      spec: {
+        description: 'BlaBla',
+        mark: 'bar',
+        encoding: {
+          x: {field: 'a', type: 'Q'}
+        }
+      }
     }
 
     vegaLiteSpecResult = {

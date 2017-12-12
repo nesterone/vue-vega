@@ -12,9 +12,9 @@ export default {
     const fullSpec = this.spec
     if (fullSpec) {
       Object.assign(vegaLiteSpec, fullSpec)
+      delete vegaLiteSpec.spec
     }
 
-    console.log(JSON.stringify(vegaLiteSpec))
     return vegaLiteSpec
   },
   dataUrl () {

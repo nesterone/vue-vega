@@ -1,8 +1,6 @@
 import vegaDelegate from 'src/components/delegate/vegaDelegate'
 import simpleBarSpec from 'spec/vega/bar-simple.vg.json'
-import {
-  DEFAULT_DATA_SOURCE_NAME
-} from 'src/constants'
+import {DEFAULT_DATA_SOURCE_NAME} from 'src/constants'
 
 describe('vegaViewDelegate', () => {
   const sandbox = sinon.sandbox.create()
@@ -171,6 +169,13 @@ describe('vegaViewDelegate', () => {
       expect(vegaView.change).to.have.been.calledWith(dataSetName, changeset)
       expect(vegaView.change).to.have.been.calledBefore(vegaView.run)
       expect(vegaView.run).to.have.been.called
+    })
+
+    it('should`t do any changes if nextData and prevData are falsy', () => {
+      streamDataToVegaView(vegaView, null, null, vegaSpec, changeset)
+
+      expect(vegaView.change).not.to.have.been.called
+      expect(vegaView.run).not.to.have.been.called
     })
   })
 })
