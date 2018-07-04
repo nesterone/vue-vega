@@ -24,13 +24,16 @@
     "build": "npm run build:lib && npm run build:bundle && npm run build:docs && npm run build:docs:data",
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
     "test": "npm run unit",
-    "lint": "eslint --ext .js,.vue src test/unit/specs"
+    "lint": "eslint --ext .js,.vue src test/unit/specs",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "dependencies": {
     "lodash-es": "^4.17.4",
     "vega": "^3.0.8",
     "vega-lite": "^2.0.3",
-    "vue": "^2.3.3"
+    "vue": "^2.3.3",
+    "snyk": "^1.88.1"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.2",
@@ -116,5 +119,6 @@
   "pre-commit": [
     "lint",
     "test"
-  ]
+  ],
+  "snyk": true
 }
