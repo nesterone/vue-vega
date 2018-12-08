@@ -1,0 +1,102 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.13.1
+ignore: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  'npm:hoek:20180212':
+    - vega > vega-view > vega-parser > vega-scenegraph > canvas-prebuilt > node-pre-gyp > hawk > hoek:
+        patched: '2018-12-08T02:45:42.290Z'
+    - vega > vega-wordcloud > canvas-prebuilt > node-pre-gyp > hawk > hoek:
+        patched: '2018-12-08T02:45:42.290Z'
+    - vega > vega-view-transforms > vega-scenegraph > canvas-prebuilt > node-pre-gyp > hawk > hoek:
+        patched: '2018-12-08T02:45:42.290Z'
+    - vega > vega-scenegraph > canvas-prebuilt > node-pre-gyp > hawk > boom > hoek:
+        patched: '2018-12-08T02:45:42.290Z'
+    - vega > vega-wordcloud > canvas-prebuilt > node-pre-gyp > hawk > boom > hoek:
+        patched: '2018-12-08T02:45:42.290Z'
+    - vega > vega-scenegraph > canvas-prebuilt > node-pre-gyp > hawk > sntp > hoek:
+        patched: '2018-12-08T02:45:42.290Z'
+    - vega > vega-wordcloud > canvas-prebuilt > node-pre-gyp > hawk > sntp > hoek:
+        patched: '2018-12-08T02:45:42.290Z'
+    - vega > vega-scenegraph > canvas-prebuilt > node-pre-gyp > request > hawk > hoek:
+        patched: '2018-12-08T02:45:42.290Z'
+    - vega > vega-wordcloud > canvas-prebuilt > node-pre-gyp > request > hawk > hoek:
+        patched: '2018-12-08T02:45:42.290Z'
+    - vega > vega-parser > vega-scenegraph > canvas-prebuilt > node-pre-gyp > hawk > hoek:
+        patched: '2018-12-08T02:45:42.290Z'
+    - vega > vega-view > vega-scenegraph > canvas-prebuilt > node-pre-gyp > hawk > hoek:
+        patched: '2018-12-08T02:45:42.290Z'
+    - vega > vega-wordcloud > canvas-prebuilt > node-pre-gyp > hawk > cryptiles > boom > hoek:
+        patched: '2018-12-08T02:45:42.290Z'
+    - vega > vega-scenegraph > canvas-prebuilt > node-pre-gyp > request > hawk > sntp > hoek:
+        patched: '2018-12-08T02:45:42.290Z'
+    - vega > vega-wordcloud > canvas-prebuilt > node-pre-gyp > request > hawk > sntp > hoek:
+        patched: '2018-12-08T02:45:42.290Z'
+    - vega > vega-parser > vega-scenegraph > canvas-prebuilt > node-pre-gyp > hawk > sntp > hoek:
+        patched: '2018-12-08T02:45:42.290Z'
+    - vega > vega-scenegraph > canvas-prebuilt > node-pre-gyp > hawk > cryptiles > boom > hoek:
+        patched: '2018-12-08T02:45:42.290Z'
+    - vega > vega-view-transforms > vega-scenegraph > canvas-prebuilt > node-pre-gyp > hawk > sntp > hoek:
+        patched: '2018-12-08T02:45:42.290Z'
+    - vega > vega-scenegraph > canvas-prebuilt > node-pre-gyp > request > hawk > boom > hoek:
+        patched: '2018-12-08T02:45:42.290Z'
+    - vega > vega-wordcloud > canvas-prebuilt > node-pre-gyp > request > hawk > boom > hoek:
+        patched: '2018-12-08T02:45:42.290Z'
+    - vega > vega-parser > vega-scenegraph > canvas-prebuilt > node-pre-gyp > request > hawk > hoek:
+        patched: '2018-12-08T02:45:42.290Z'
+    - vega > vega-view > vega-scenegraph > canvas-prebuilt > node-pre-gyp > request > hawk > hoek:
+        patched: '2018-12-08T02:45:42.290Z'
+    - vega > vega-view-transforms > vega-scenegraph > canvas-prebuilt > node-pre-gyp > request > hawk > hoek:
+        patched: '2018-12-08T02:45:42.290Z'
+    - vega > vega-parser > vega-scenegraph > canvas-prebuilt > node-pre-gyp > hawk > boom > hoek:
+        patched: '2018-12-08T02:45:42.290Z'
+    - vega > vega-view > vega-scenegraph > canvas-prebuilt > node-pre-gyp > hawk > boom > hoek:
+        patched: '2018-12-08T02:45:42.290Z'
+    - vega > vega-scenegraph > canvas-prebuilt > node-pre-gyp > hawk > hoek:
+        patched: '2018-12-08T02:45:42.290Z'
+    - vega > vega-view-transforms > vega-scenegraph > canvas-prebuilt > node-pre-gyp > hawk > boom > hoek:
+        patched: '2018-12-08T02:45:42.290Z'
+    - vega > vega-view > vega-scenegraph > canvas-prebuilt > node-pre-gyp > hawk > sntp > hoek:
+        patched: '2018-12-08T02:45:42.290Z'
+    - vega > vega-view-transforms > vega-scenegraph > canvas-prebuilt > node-pre-gyp > request > hawk > sntp > hoek:
+        patched: '2018-12-08T02:45:42.290Z'
+    - vega > vega-view-transforms > vega-scenegraph > canvas-prebuilt > node-pre-gyp > request > hawk > boom > hoek:
+        patched: '2018-12-08T02:45:42.290Z'
+    - vega > vega-view-transforms > vega-scenegraph > canvas-prebuilt > node-pre-gyp > hawk > cryptiles > boom > hoek:
+        patched: '2018-12-08T02:45:42.290Z'
+    - vega > vega-view > vega-parser > vega-scenegraph > canvas-prebuilt > node-pre-gyp > request > hawk > hoek:
+        patched: '2018-12-08T02:45:42.290Z'
+    - vega > vega-parser > vega-scenegraph > canvas-prebuilt > node-pre-gyp > request > hawk > sntp > hoek:
+        patched: '2018-12-08T02:45:42.290Z'
+    - vega > vega-scenegraph > canvas-prebuilt > node-pre-gyp > request > hawk > cryptiles > boom > hoek:
+        patched: '2018-12-08T02:45:42.290Z'
+    - vega > vega-parser > vega-scenegraph > canvas-prebuilt > node-pre-gyp > hawk > cryptiles > boom > hoek:
+        patched: '2018-12-08T02:45:42.290Z'
+    - vega > vega-wordcloud > canvas-prebuilt > node-pre-gyp > request > hawk > cryptiles > boom > hoek:
+        patched: '2018-12-08T02:45:42.290Z'
+    - vega > vega-view > vega-parser > vega-scenegraph > canvas-prebuilt > node-pre-gyp > hawk > boom > hoek:
+        patched: '2018-12-08T02:45:42.290Z'
+    - vega > vega-view > vega-parser > vega-scenegraph > canvas-prebuilt > node-pre-gyp > hawk > sntp > hoek:
+        patched: '2018-12-08T02:45:42.290Z'
+    - vega > vega-view > vega-scenegraph > canvas-prebuilt > node-pre-gyp > hawk > cryptiles > boom > hoek:
+        patched: '2018-12-08T02:45:42.290Z'
+    - vega > vega-parser > vega-scenegraph > canvas-prebuilt > node-pre-gyp > request > hawk > boom > hoek:
+        patched: '2018-12-08T02:45:42.290Z'
+    - vega > vega-view > vega-scenegraph > canvas-prebuilt > node-pre-gyp > request > hawk > boom > hoek:
+        patched: '2018-12-08T02:45:42.290Z'
+    - vega > vega-view > vega-scenegraph > canvas-prebuilt > node-pre-gyp > request > hawk > sntp > hoek:
+        patched: '2018-12-08T02:45:42.290Z'
+    - vega > vega-view > vega-parser > vega-scenegraph > canvas-prebuilt > node-pre-gyp > request > hawk > sntp > hoek:
+        patched: '2018-12-08T02:45:42.290Z'
+    - vega > vega-parser > vega-scenegraph > canvas-prebuilt > node-pre-gyp > request > hawk > cryptiles > boom > hoek:
+        patched: '2018-12-08T02:45:42.290Z'
+    - vega > vega-view > vega-scenegraph > canvas-prebuilt > node-pre-gyp > request > hawk > cryptiles > boom > hoek:
+        patched: '2018-12-08T02:45:42.290Z'
+    - vega > vega-view > vega-parser > vega-scenegraph > canvas-prebuilt > node-pre-gyp > hawk > cryptiles > boom > hoek:
+        patched: '2018-12-08T02:45:42.290Z'
+    - vega > vega-view-transforms > vega-scenegraph > canvas-prebuilt > node-pre-gyp > request > hawk > cryptiles > boom > hoek:
+        patched: '2018-12-08T02:45:42.290Z'
+    - vega > vega-view > vega-parser > vega-scenegraph > canvas-prebuilt > node-pre-gyp > request > hawk > boom > hoek:
+        patched: '2018-12-08T02:45:42.290Z'
+    - vega > vega-view > vega-parser > vega-scenegraph > canvas-prebuilt > node-pre-gyp > request > hawk > cryptiles > boom > hoek:
+        patched: '2018-12-08T02:45:42.290Z'
